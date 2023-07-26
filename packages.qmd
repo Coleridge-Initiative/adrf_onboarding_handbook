@@ -1,0 +1,17 @@
+---
+title: "Adding Additional Packages in R/Python"
+---
+
+## Adding Additional Packages in R/Python
+
+In order to request additional packages in R/Python, please email [support\@coleridgeinitiative.org](mailto:support@coleridgeinitiative.org "mailto:support@coleridgeinitiative.org") with the following information:
+
+1.  Package name and configuration.
+
+2.  A list of dependencies (whether the packages depend on OS-specific libraries (DLLs, .so)).
+
+3.  A simple validation script to confirm the installation was successful. 
+
+The third item allows Coleridge to verify that the package is accessible from within your Python/R environment. The validation script below demonstrates importing a package (*tensorflow*) and running a functionality specific to that package (*config.list_physical_devices()*). If the install was unsuccessful, then the import or the function would fail to run.
+
+![](images/packages1.png){fig-alt="example of configuring tensorflow" fig-align="center"}

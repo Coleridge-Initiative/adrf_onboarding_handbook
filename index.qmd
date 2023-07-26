@@ -1,13 +1,5 @@
 # Preface {.unnumbered}
 
-This is a Quarto book.
+This is a revised version of the [Coleridge Initiative](https://coleridgeinitiative.org/) ADRF User On-boarding Handbook
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
-
-```{r}
-1 + 1
-```
-
-```{r}
-2+5
-```
+This is a living document intended to show new ADRF users how to use the platform for common tasks

@@ -1,0 +1,18 @@
+---
+title: "Accessing Your Data"
+---
+
+## **Locate your Data in a Database**
+
+\
+The ADRF stores data using Redshift. The simplest way to locate and get a quick overview of your data in a database is to use DBeaver. Please see the section on Data Organization, Amazon RedShift Querying Guide to locate and connect to your data.
+
+### G: Drive
+
+Unstructured data is located on the `G:` drive inside the file system.
+
+![](images/acc1.png){fig-alt="data directory in ADRF" fig-align="center"}
+
+### External Data and Code
+
+Please note that importing of external data and code is restricted to only Coleridge staff. Given the secure and protected environment provided by the ADRF, all code, data, and packages that are coming from outside of the ADRF must be carefully vetted to prevent leaks, disclosure, or unauthorized access. This means that there is no direct method for uploading data or code from your system to the ADRF. Please contact [support\@coleridgeinitiative.org](mailto:support@coleridgeinitiative.org "mailto:support@coleridgeinitiative.org") for any questions or assistance on importing your own code, data, or packages.

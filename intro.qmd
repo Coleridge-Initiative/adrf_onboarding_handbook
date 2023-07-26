@@ -1,9 +1,3 @@
 # Introduction
 
-This is a book created from markdown and executable code.
-
-See @knuth84 for additional discussion of literate programming.
-
-```{r}
-1 + 1
-```
+This is a living document intended to show new ADRF users how to use the platform for common tasks
