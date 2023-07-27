@@ -1,0 +1,16 @@
+[
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Confidential Information Protection and Statistical Efficiency Act of 2002. (Washington, DC: U.S. GPO, 2002).\nFederal Committee on Statistical Methodology. “Report on Statistical Disclosure Limitation Methodology,” 22 (Second Version, 2005). https://nces.ed.gov/fcsm/pdf/spwp22.pdf.\n“How to Use Microdata Properly: Self-Study Material for the Users of Eurostat Microdata Sets.” (2018). https://ec.europa.eu/eurostat/web/microdata/overview/self-study-material-for-microdata-users.\nResearch Data Centre of the German Federal Employment Agency at the Institute for Employment Research. “Remote Data Access and On-Site Use at the FDZ of the BA at the IAB.” (2020, December 8). http://doku.iab.de/fdz/access/Vorgaben_DAFE_EN.PDF\nWelpton, Richard. Handbook on Statistical Disclosure Control for Outputs. (figshare, 2019). https://doi.org/10.6084/m9.figshare.9958520.v1."
+  },
+  {
+    "objectID": "appendix.html#sec-guide",
+    "href": "appendix.html#sec-guide",
+    "title": "11  Redshift querying guide",
+    "section": "Introduction",
+    "text": "Introduction\nThis document serves as an introduction to generating proficient Amazon Redshift queries. This is a generalized document meaning you will need to replace “schema_name” and “table_name” with the appropriate schema and table names used for your project."
+  }
+]
