@@ -1,0 +1,7 @@
+---
+title: "Redshift querying guide"
+---
+
+## ***Introduction*** {#sec-RedShiftGuide}
+
+This document serves as an introduction to generating proficient Amazon Redshift queries. This is a generalized document meaning you will need to replace "schema_name" and "table_name" with the appropriate schema and table names used for your project. 

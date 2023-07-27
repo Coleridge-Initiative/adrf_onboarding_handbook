@@ -13,6 +13,7 @@ book:
     - access.qmd
     - onboarding.qmd
     - dosanddonts.qmd
+    - using.qmd
     - accessing.qmd
     - storing.qmd
     - sharing.qmd
@@ -20,6 +21,7 @@ book:
     - packages.qmd
     - support.qmd
     - references.qmd
+    - appendix.qmd
   search: 
     location: sidebar
     type: textbox
