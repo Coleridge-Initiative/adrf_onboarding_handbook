@@ -46,7 +46,7 @@ format:
     theme: darkly
     backgroundcolor: "#191E3F"
     highlight-style: arrow
-    embed-resources: true
+    embed-resources: false
     toc: true
     df-print: paged
     number-depth: 1
