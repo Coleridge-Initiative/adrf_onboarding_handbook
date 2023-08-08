@@ -4,7 +4,6 @@ title: "Accessing Your Data"
 
 ## **Locate your Data in a Database**
 
-\
 The ADRF stores data using Redshift. The simplest way to locate and get a quick overview of your data in a database is to use DBeaver. Please see the section on Data Organization, Amazon RedShift Querying Guide to locate and connect to your data.
 
 ### G: Drive
