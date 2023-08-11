@@ -2,32 +2,6 @@
 
 This is a revised version of the [Coleridge Initiative](https://coleridgeinitiative.org/) ADRF User On-boarding Handbook
 
-This is a living document intended to show new ADRF users how to use the platform for common task
+This is a living document intended to show new ADRF users how to use the platform for common tasks
 
 © 2023 The Coleridge Initiative, Inc
-
-## FAQs
-
-**How do I set up my multifactor authentication?**
-
-**Can I set up more than one form of multifactor authentication?**
-
-**How can I reset my password?**
-
-**What if I do not remember my security questions or if I get locked out?**
-
-**I can log into the ADRF but my desktop and DS application just show blank pages**
-
-**How do I open an ipynb notebook?**
-
-**How can I ingest publicly available data into the ADRF?**
-
-**Where can I access publicly available data from within the ADRF?**
-
-**Where is my project or training related data stored?**
-
-**My datais not in a relational format. Where can I find these files?**
-
-**What are the differences between P:, U: and G: drives?**
-
-**I need to process a large amount of relational data. What is the destination location?**

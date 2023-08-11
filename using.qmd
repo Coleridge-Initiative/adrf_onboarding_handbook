@@ -10,7 +10,7 @@ This video linked below runs through the necessary steps for logging into and lo
 
 ## **Virtual Desktop Environment**
 
-### What is a VDE?
+### What is a VDE? {#sec-tempworkspace}
 
 *Purpose, Contents, Capabilities*\
 A virtual desktop environment (VDE) allows you to interact with a remote system as if it were your own personal computer. The majority of your standard desktop functions are available, but the programs, data, and permissions are all controlled by the remote administrator (Coleridge Initiative). Thus, you will be working in a familiar environment while accessing protected data, programs, and systems that would otherwise be difficult to distribute. The ADRF uses a standard Windows environment (Windows Server) and provides a variety of software packages to conduct your analysis. For more on Windows capabilities, see the section on Windows Settings.
@@ -123,7 +123,7 @@ On the left side of DBeaver, a pane labeled Database Navigator allows you to eas
 
 ### SQL Editor
 
-The SQL Editor is where you can write your own queries to analyze the data. A new script can be opened by clicking on the blue almost-square (looks a bit like an unrolled scroll) on DBeaver\'s tool bar:
+The SQL Editor is where you can write your own queries to analyze the data. A new script can be opened by clicking on the blue almost-square (looks a bit like an unrolled scroll) on DBeaver's tool bar:
 
 The location of this script button is circled in the red in the upper left of the screenshot below.
 
@@ -147,11 +147,11 @@ Once you have done so, the top of your SQL Editor window should name the server 
 
 ### LibreOffice
 
-LibreOffice is an office productivity suite. LibreOffice comes equipped with six different programs: a word processor program (Writer), a spreadsheet program (Calc), a presentation program (Impress), a graphics editor program (Draw), a math equation program (Math), and a database management program akin to Microsoft Access (Base). LibreOffice may be accessed through the desktop shortcut DBeaver or by looking it up using the search bar. Once you\'ve opened up LibreOffice, you can open any of those six programs, using the left sidebar. For more information on LibreOffice, visit the LibreOffice [website](https://www.libreoffice.org/ "https://www.libreoffice.org/").
+LibreOffice is an office productivity suite. LibreOffice comes equipped with six different programs: a word processor program (Writer), a spreadsheet program (Calc), a presentation program (Impress), a graphics editor program (Draw), a math equation program (Math), and a database management program akin to Microsoft Access (Base). LibreOffice may be accessed through the desktop shortcut DBeaver or by looking it up using the search bar. Once you've opened up LibreOffice, you can open any of those six programs, using the left sidebar. For more information on LibreOffice, visit the LibreOffice [website](https://www.libreoffice.org/ "https://www.libreoffice.org/").
 
 ![](images/use17.png){fig-alt="libreoffice location" fig-align="center"}
 
-Once you click on the icon, you\'ll see a page with a left sidebar that has a variety of document types under Create. Select the one suited to your needs and double click to open it.
+Once you click on the icon, you'll see a page with a left sidebar that has a variety of document types under Create. Select the one suited to your needs and double click to open it.
 
 ![](images/use18.png){fig-alt="libreoffice navigator" fig-align="center"}
 

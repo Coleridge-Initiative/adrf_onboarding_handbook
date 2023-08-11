@@ -12,6 +12,7 @@ book:
     - index.qmd
     - access.qmd
     - onboarding.qmd
+    - faq.qmd
     - dosanddonts.qmd
     - using.qmd
     - accessing.qmd
@@ -51,8 +52,17 @@ format:
     df-print: paged
     number-depth: 1
     
-  pdf:
-    documentclass: book
-    cover-image: images/cilogoblk.png
+  titlepage-pdf:
+    coverpage: true
+    cover-bg-image: "/Users/coreysparks/Documents/Github/adrf_onboarding_handbook/images/coverpagepng"
+    documentclass: scrbook
+    classoption: ["oneside", "open=any"]
+    number-sections: true
+    author:
+    - name: Josh Edelmann
+    - name: Corey Sparks
+      affiliations:
+        - name: Coleridge Initiative
+
 
 editor: visual
