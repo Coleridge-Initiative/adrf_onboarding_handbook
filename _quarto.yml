@@ -6,7 +6,7 @@ book:
   author: "Josh Edelmann and Corey Sparks"
 #  author: "Corey Sparks"
   date: last-modified
-  #cover-image: images/cilogowht.png
+  cover-image: images/coverpage.png
   date-format: "[Last Updated on] DD MMMM, YYYY"
   chapters:
     - index.qmd
@@ -52,6 +52,9 @@ format:
     df-print: paged
     number-depth: 1
     
+  epub:
+     cover-image: images/coverpage.png  
+  
   titlepage-pdf:
     coverpage: true
     cover-bg-image: "/Users/coreysparks/Documents/Github/adrf_onboarding_handbook/images/coverpagepng"
