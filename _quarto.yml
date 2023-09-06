@@ -45,8 +45,8 @@ book:
 
 format:
   html:
-    theme: darkly
-    backgroundcolor: "#191E3F"
+    theme: journal
+    backgroundcolor: "white"
     highlight-style: arrow
     embed-resources: false
     toc: true
