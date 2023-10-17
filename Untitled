@@ -1,0 +1,4 @@
+- source: project
+  quarto-pub:
+    - id: 8041e69b-287d-482b-9f51-1168c9933c00
+      url: 'https://coleridge-initiative.quarto.pub/adrf-user-manual'

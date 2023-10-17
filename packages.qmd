@@ -29,8 +29,8 @@ All packages will be installed in your user folder.
 To install a specific package version you can specify:
 
 `install.packages("remotes")`
-`remotes::install_version("tidyverse", "1.3.2")`
 
+`remotes::install_version("tidyverse", "1.3.2")`
 
 ::: callout-note
 We recommend starting R using Rstudio for best results, instead of double clicking on a R or Rmarkdown script.
