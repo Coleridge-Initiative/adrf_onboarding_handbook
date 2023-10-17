@@ -207,7 +207,7 @@
     "href": "packages.html#adding-additional-packages-in-rpython",
     "title": "10  Adding Additional Packages in R/Python",
     "section": "Adding Additional Packages in R/Python",
-    "text": "Adding Additional Packages in R/Python\nThe ADRF has an internal package repository, so users can install packages for R and Python themselves."
+    "text": "Adding Additional Packages in R/Python\nThe ADRF has an internal package repository, so users can install packages for R and Python themselves.\nThe repositories that are currently mirrored in the ADRF are CRAN for R packages and PyPi.org for Python. There is currently no access to packages hosted on Github or other mirrors."
   },
   {
     "objectID": "packages.html#r-packages",
