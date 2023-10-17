@@ -207,21 +207,21 @@
     "href": "packages.html#adding-additional-packages-in-rpython",
     "title": "10  Adding Additional Packages in R/Python",
     "section": "Adding Additional Packages in R/Python",
-    "text": "Adding Additional Packages in R/Python\nThe ADRF has an internal package repository, so users can install packages for R and Python themselves.\nThe repositories that are currently mirrored in the ADRF are CRAN for R packages and PyPi.org for Python. There is currently no access to packages hosted on Github or other mirrors."
+    "text": "Adding Additional Packages in R/Python\nThe ADRF has an internal package repository, so users can install packages for R and Python themselves.\nThe repositories that are currently mirrored in the ADRF are CRAN for R packages and PyPi.org for Python. There is currently no access to packages hosted on Github or other mirrors.\n\n\n\n\n\n\nNote\n\n\n\nIf you are working in a shared workspace for a project, each user in the project must install the packages, there is no shared package installation for projects."
   },
   {
     "objectID": "packages.html#r-packages",
     "href": "packages.html#r-packages",
     "title": "10  Adding Additional Packages in R/Python",
     "section": "R packages",
-    "text": "R packages\nTo install R packages, simply type:\ninstall.packages(\"packagename\")\n\nand the package will be installed from the repository. You will not have to re-install the package again, and to use the package load it with the library() function. For example:\nlibrary(tidyverse)\nAll packages will be installed in your user folder.\n\n\n\n\n\n\nNote\n\n\n\nWe recommend starting R using Rstudio for best results, instead of double clicking on a R or Rmarkdown script."
+    "text": "R packages\nTo install R packages, simply type:\ninstall.packages(\"packagename\")\n\nand the package will be installed from the repository. You will not have to re-install the package again, and to use the package load it with the library() function. For example:\nlibrary(tidyverse)\nAll packages will be installed in your user folder.\nTo install a specific package version you can specify:\ninstall.packages(\"remotes\") remotes::install_version(\"tidyverse\", \"1.3.2\")\n\n\n\n\n\n\nNote\n\n\n\nWe recommend starting R using Rstudio for best results, instead of double clicking on a R or Rmarkdown script."
   },
   {
     "objectID": "packages.html#python-packages",
     "href": "packages.html#python-packages",
     "title": "10  Adding Additional Packages in R/Python",
     "section": "Python packages",
-    "text": "Python packages\nSimilar to R packages, Python packages may be installed using the Package Installer for Python (pip).\n\n\n\n\n\n\nNote\n\n\n\nWe recommend installing python packages from the command line. If you start Jupyter lab, and choose the Terminal tab:\n\nThen install your package using pip, for example, to install the pandas package:\n\nThen you may use the package within your Jupyter notebook as usual."
+    "text": "Python packages\nSimilar to R packages, Python packages may be installed using the Package Installer for Python (pip).\n\n\n\n\n\n\nNote\n\n\n\nWe recommend installing python packages from the command line. If you start Jupyter lab, and choose the Terminal tab:\n\nThen install your package using pip, for example, to install the pandas package:\n\nThen you may use the package within your Jupyter notebook as usual.\n\n\nTo install a specific package version type\npip install pandas==1.2.3"
   },
   {
     "objectID": "support.html#technical-support",
