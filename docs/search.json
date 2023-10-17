@@ -207,7 +207,21 @@
     "href": "packages.html#adding-additional-packages-in-rpython",
     "title": "10  Adding Additional Packages in R/Python",
     "section": "Adding Additional Packages in R/Python",
-    "text": "Adding Additional Packages in R/Python\nIn order to request additional packages in R/Python, please email support@coleridgeinitiative.org with the following information:\n\nPackage name and configuration.\nA list of dependencies (whether the packages depend on OS-specific libraries (DLLs, .so)).\nA simple validation script to confirm the installation was successful. \n\nThe third item allows Coleridge to verify that the package is accessible from within your Python/R environment. The validation script below demonstrates importing a package (tensorflow) and running a functionality specific to that package (config.list_physical_devices()). If the install was unsuccessful, then the import or the function would fail to run."
+    "text": "Adding Additional Packages in R/Python\nThe ADRF has an internal package repository, so users can install packages for R and Python themselves."
+  },
+  {
+    "objectID": "packages.html#r-packages",
+    "href": "packages.html#r-packages",
+    "title": "10  Adding Additional Packages in R/Python",
+    "section": "R packages",
+    "text": "R packages\nTo install R packages, simply type:\ninstall.packages(\"packagename\")\n\nand the package will be installed from the repository. You will not have to re-install the package again, and to use the package load it with the library() function. For example:\nlibrary(tidyverse)\nAll packages will be installed in your user folder.\nWe recommend starting R using Rstudio for best results, instead of double clicking on a R or Rmarkdown script."
+  },
+  {
+    "objectID": "packages.html#python-packages",
+    "href": "packages.html#python-packages",
+    "title": "10  Adding Additional Packages in R/Python",
+    "section": "Python packages",
+    "text": "Python packages\nSimilar to R packages, Python packages may be installed using the Package Installer for Python (pip).\nWe recommend installing python packages from the command line. If you start Jupyter lab, and choose the Terminal tab:\n\nThen install your package using pip, for example, to install the pandas package:\n\nThen you may use the package within your Jupyter notebook as usual."
   },
   {
     "objectID": "support.html#technical-support",

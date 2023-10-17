@@ -4,14 +4,34 @@ title: "Adding Additional Packages in R/Python"
 
 ## Adding Additional Packages in R/Python
 
-In order to request additional packages in R/Python, please email [support\@coleridgeinitiative.org](mailto:support@coleridgeinitiative.org "mailto:support@coleridgeinitiative.org") with the following information:
+The ADRF has an internal package repository, so users can install packages for R and Python themselves.
 
-1.  Package name and configuration.
+## R packages
 
-2.  A list of dependencies (whether the packages depend on OS-specific libraries (DLLs, .so)).
+To install R packages, simply type:
 
-3.  A simple validation script to confirm the installation was successful. 
+`install.packages("packagename")`
 
-The third item allows Coleridge to verify that the package is accessible from within your Python/R environment. The validation script below demonstrates importing a package (*tensorflow*) and running a functionality specific to that package (*config.list_physical_devices()*). If the install was unsuccessful, then the import or the function would fail to run.
+![](images/rinstall.png)
 
-![](images/packages1.png){fig-alt="example of configuring tensorflow" fig-align="center"}
+and the package will be installed from the repository. You will not have to re-install the package again, and to use the package load it with the `library()` function. For example:
+
+`library(tidyverse`)
+
+All packages will be installed in your user folder.
+
+We recommend starting R using Rstudio for best results, instead of double clicking on a R or Rmarkdown script.
+
+## Python packages
+
+Similar to R packages, Python packages may be installed using the Package Installer for Python (pip).
+
+We recommend installing python packages from the command line. If you start Jupyter lab, and choose the Terminal tab:
+
+![](images/pythoninstall.png){width="445"}
+
+Then install your package using pip, for example, to install the `pandas` package:
+
+![](images/pip.png)
+
+Then you may use the package within your Jupyter notebook as usual.
