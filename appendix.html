@@ -233,7 +233,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#sec-guide" id="toc-sec-guide" class="nav-link active" data-scroll-target="#sec-guide">Introduction</a></li>
-  <li><a href="#data-access" id="toc-data-access" class="nav-link" data-scroll-target="#data-access"><strong>Data Access</strong></a></li>
+  <li><a href="#data-access" id="toc-data-access" class="nav-link" data-scroll-target="#data-access"><strong>Data Access</strong></a>
+  <ul class="collapse">
+  <li><a href="#dbeaver" id="toc-dbeaver" class="nav-link" data-scroll-target="#dbeaver">DBeaver</a></li>
+  <li><a href="#sas-connection" id="toc-sas-connection" class="nav-link" data-scroll-target="#sas-connection">SAS Connection</a></li>
+  <li><a href="#r-connection" id="toc-r-connection" class="nav-link" data-scroll-target="#r-connection">R Connection</a></li>
+  <li><a href="#python-connection" id="toc-python-connection" class="nav-link" data-scroll-target="#python-connection">Python Connection</a></li>
+  <li><a href="#stata-connection" id="toc-stata-connection" class="nav-link" data-scroll-target="#stata-connection">Stata Connection</a></li>
+  </ul></li>
   <li><a href="#redshift-query-guidelines-for-researchers" id="toc-redshift-query-guidelines-for-researchers" class="nav-link" data-scroll-target="#redshift-query-guidelines-for-researchers"><strong>Redshift Query Guidelines for Researchers</strong></a>
   <ul class="collapse">
   <li><a href="#do-and-dont-do-best-practices" id="toc-do-and-dont-do-best-practices" class="nav-link" data-scroll-target="#do-and-dont-do-best-practices"><strong><em>DO and DON’T DO BEST PRACTICES:</em></strong></a></li>
@@ -292,9 +299,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p>All data is stored under schemas in the <strong><em>projects</em></strong> database and are accessible by the following programs:&nbsp;</p>
-<ul>
-<li><strong>DBeaver</strong></li>
-</ul>
+<section id="dbeaver" class="level3">
+<h3 class="anchored" data-anchor-id="dbeaver">DBeaver</h3>
 <p>To establish a connection to Redshift in DBeaver, first double click on the server you wish to connect to. In the example below I’m connecting to <code>Redshift11_projects</code>. Then a window will appear asking for your Username and Password. This will be your user folder name and include <code>adrf\</code> before the username. Then click OK. You will now have access to your data stored on the <code>Redshift11_projects</code> server.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -305,12 +311,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>When users create tables in their PR (Research Project) or TR (Training Project) schema, the table is initially permissioned to the user only. This is analogous to creating a document or file in your U drive: Only you have access to the newly created table.</p>
 <p>If you want to allow all individuals in your project workspace to access the table in the PR/TR schema, you will need to grant permission to the table to the rest of the users who have access to the PR or TR schema.</p>
 <p>You can do this by running the following code:</p>
-<p><code>GRANT SELECT, UPDATE, DELETE, INSERT ON TABLE schema_name.table_name TO group db_xxxxxx_rw;</code></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span>, <span class="kw">UPDATE</span>, <span class="kw">DELETE</span>, <span class="kw">INSERT</span> <span class="kw">ON</span> <span class="kw">TABLE</span> schema_name.table_name <span class="kw">TO</span> <span class="kw">group</span> db_xxxxxx_rw;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
 <p>Note: In the above code example replace <code>schma_name</code> with the <code>pr_</code> or <code>tr_</code> schema assigned to your workspace and replace <code>table_name</code> with the name of the table on which you want to grant access. Also, in the group name <code>db_xxxxxx_rw</code>, replace <code>xxxxxx</code> with your project code. This is the last 6 characters in your project based user name. This will start with either a <code>T</code> or a <code>P</code>.</p>
 </blockquote>
 <p>If you want to allow only a single user on your project to access the table, you will need to grant permission to that user. You can do this by running the following code:</p>
-<p><code>GRANT SELECT, UPDATE, DELETE, INSERT ON TABLE</code> <code>schema_name.table_name&nbsp;to</code> <code>"IAM:first_name.last_name.project_code";</code></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sql code-with-copy"><code class="sourceCode sql"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">GRANT</span> <span class="kw">SELECT</span>, <span class="kw">UPDATE</span>, <span class="kw">DELETE</span>, <span class="kw">INSERT</span> <span class="kw">ON</span> <span class="kw">TABLE</span> schema_name.table_name <span class="kw">to</span> <span class="ot">"IAM:first_name.last_name.project_code"</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote class="blockquote">
 <p>Note: In the above code example replace <code>schma_name</code> with the <code>pr_</code> or <code>tr_</code> schema assigned to your workspace and replace <code>table_name</code> with the name of the table on which you want to grant access. Also, in <code>"IAM:first_name.last_name.project_code"</code> update <code>first_name.last_name.project_code</code> with the user name to whom you want to grant access to.</p>
 </blockquote>
@@ -321,9 +327,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><p><strong>Redshift11_projects_DSN</strong></p></li>
 </ul>
 <p>In the code examples below, the default DSN is <code>Redshift01_projects_DSN</code>.</p>
-<ul>
-<li><strong>SAS Connection</strong></li>
-</ul>
+</section>
+<section id="sas-connection" class="level3">
+<h3 class="anchored" data-anchor-id="sas-connection">SAS Connection</h3>
 <pre class="sas"><code>proc sql;
 connect to odbc as my con
 (datasrc=Redshift01_projects_DSN user=adrf\user.name.project password=password);
@@ -331,158 +337,97 @@ select * from connection to mycon
 (select * form projects.schema.table);
 disconnect from mycon;
 quit;</code></pre>
-<ul>
-<li><strong>R Connection</strong></li>
-</ul>
+</section>
+<section id="r-connection" class="level3">
+<h3 class="anchored" data-anchor-id="r-connection">R Connection</h3>
 <p><strong>Best practices for loading large amounts of data in R</strong></p>
 <p>To ensure R can efficiently manage large amounts of data, please&nbsp;add the following&nbsp;lines of code to your R script before any packages are loaded:&nbsp;</p>
-<p><code>options(java.parameters = c("-XX:+UseConcMarkSweepGC", "-Xmx8192m")) gc()</code></p>
-<p><strong><em>Redshift R database connectivity Changes</em></strong></p>
-<p><em>When connecting to Redshift database using R (whether in R Studio or Jupyter Notebook), We strongly recommend that you use a JDBC based connection (versus using an ODBC based connection). Other than how you connect to database, rest of your code should remain the same.</em></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">java.parameters =</span> <span class="fu">c</span>(<span class="st">"-XX:+UseConcMarkSweepGC"</span>, <span class="st">"-Xmx8192m"</span>)) <span class="fu">gc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Best practices for writing tables to Redshift</strong></p>
-<p>When writing tables to Redshift from R in either a SQL query or R data frame, please use the following lines of R code:</p>
-<p>Writing a table from R to Redshift using SQL <code>INTO</code> statement use the function <code>dbSendUpdate()</code>:</p>
-<p><code>dbSendUpdate(conn, SELECT col_1 INTO schema_name.table_name FROM schema_name.old_table_name</code></p>
 <p>When writing an R data frame to Redshift use the following code as an example:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>qry <span class="ot">&lt;-</span> <span class="st">"set search_path to schema_name"</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendUpdate</span>(conn, qry)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dbWriteTable</span>(</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="at">conn =</span> conn, <span class="co">#name of the connection</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">name =</span> <span class="st">'table_name'</span>, <span class="co">#name of table to save df to</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">value =</span> df_name, <span class="co">#name of df to write to Redshift</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">overwrite =</span> <span class="cn">TRUE</span> <span class="co">#if you want to overwrite a current table, otherwise FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: replace the table_name with the name of the data frame you wish to write to Redshift</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>DBI<span class="sc">::</span><span class="fu">dbWriteTable</span>(<span class="at">conn =</span> conn, <span class="co">#name of the connection </span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="at">name =</span> <span class="st">"schema_name.table_name"</span>, <span class="co">#name of table to save df to </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="at">value =</span> df_name, <span class="co">#name of df to write to Redshift </span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="at">overwrite =</span> <span class="cn">TRUE</span>) <span class="co">#if you want to overwrite a current table, otherwise FALSE</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>qry <span class="ot">&lt;-</span> <span class="st">"GRANT SELECT ON TABLE schema.table_name TO group &lt;group_name&gt;;"</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">dbSendUpdate</span>(conn,qry)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong><em>The below table is for connecting to RedShift11 Database</em></strong></p>
-<table class="table">
-<colgroup>
-<col style="width: 11%">
-<col style="width: 43%">
-<col style="width: 44%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>ODBC Based Connection</td>
-<td>JDBC Based Connection(Recommended)</td>
-</tr>
-<tr class="even">
-<td><strong><em>Libraries</em></strong></td>
-<td><code>library(odbc)</code></td>
-<td><code>library(RJDBC)</code></td>
-</tr>
-<tr class="odd">
-<td><strong><em>User ID and Password</em></strong></td>
-<td></td>
-<td><p><code>dbusr=Sys.getenv("DBUSER")</code></p>
-<p><code>dbpswd=Sys.getenv("DBPASSWD")</code></p></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td><p><code># Database URL</code></p>
-<p><code>url &lt;- "jdbc:redshift:iam://adrf-redshift11.cdy8ch2udktk.us-gov-west-1.redshift.amazonaws.com:5439/projects;</code></p>
-<p><code>loginToRp=urn:amazon:webservices:govcloud;</code></p>
-<p><code>ssl=true;</code></p>
-<p><code>AutoCreate=true;</code></p>
-<p><code>idp_host=adfs.adrf.net;</code></p>
-<p><code>idp_port=443;</code></p>
-<p><code>ssl_insecure=true;</code></p>
-<p><code>plugin_name=com.amazon.redshift.plugin.AdfsCredentialsProvider"</code></p>
-<p><code># Redshift JDBC Driver Setting</code></p>
-<p><code>driver &lt;- JDBC("com.amazon.redshift.jdbc42.Driver",</code></p>
-<p><code>classPath = "C:\\drivers\\redshift_withsdk\\redshift-jdbc42-2.1.0.12\\redshift-jdbc42-2.1.0.12.jar",</code></p>
-<p><code>identifier.quote="`")</code></p></td>
-</tr>
-<tr class="odd">
-<td><strong><em>Connection</em></strong></td>
-<td><code>con &lt;- dbConnect(odbc(),"Redshift11_projects_DSN",uid = "adrf\\John.doe.p00002", pwd = 'xxxxxxxxxxxxxx')</code></td>
-<td><code>conn &lt;- dbConnect(driver, url, dbusr, dbpswd)</code></td>
-</tr>
-</tbody>
-</table>
-<p><em>For the above code to work, please create a file name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>.Renviron</strong> in your user folder (user folder is something like&nbsp; i.e.&nbsp;u:\ John.doe.p00002) And <strong>.Renviron file</strong> should contain the following:</em></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>DBUSER<span class="ot">=</span><span class="st">'adrf\John.doe.p00002'</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>DBPASSWD<span class="ot">=</span><span class="st">'xxxxxxxxxxxx'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RJDBC)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dbusr<span class="ot">=</span><span class="fu">Sys.getenv</span>(<span class="st">"DBUSER"</span>)                                                                                  </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>dbpswd<span class="ot">=</span><span class="fu">Sys.getenv</span>(<span class="st">"DBPASSWD"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Database URL</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"jdbc:redshift:iam://adrf-redshift11.cdy8ch2udktk.us-gov-west-1.redshift.amazonaws.com:5439/projects;"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="st">"loginToRp=urn:amazon:webservices:govcloud;"</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="st">"ssl=true;"</span>,</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="st">"AutoCreate=true;"</span>,</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="st">"idp_host=adfs.adrf.net;"</span>,</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="st">"idp_port=443;"</span>,</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="st">"ssl_insecure=true;"</span>,</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="st">"plugin_name=com.amazon.redshift.plugin.AdfsCredentialsProvider"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Redshift JDBC Driver Setting</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>driver <span class="ot">&lt;-</span> <span class="fu">JDBC</span>(<span class="st">"com.amazon.redshift.jdbc42.Driver"</span>,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="at">classPath =</span> <span class="st">"C:</span><span class="sc">\\</span><span class="st">drivers</span><span class="sc">\\</span><span class="st">redshift_withsdk</span><span class="sc">\\</span><span class="st">redshift-jdbc42-2.1.0.12</span><span class="sc">\\</span><span class="st">redshift-jdbc42-2.1.0.12.jar"</span>,</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="at">identifier.quote=</span><span class="st">"`"</span>)</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(driver, url, dbusr, dbpswd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>For the above code to work, please create a file name <strong>.Renviron</strong> in your user folder (user folder is something like i.e.&nbsp;u:\ John.doe.p00002) And <strong>.Renviron file</strong> should contain the following:</em></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>DBUSER<span class="ot">=</span><span class="st">'adrf\John.doe.p00002'</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>DBPASSWD<span class="ot">=</span><span class="st">'xxxxxxxxxxxx'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><em>PLEASE replace user id and password with your project workspace specific user is and password.</em></p>
 <p><em>This will ensure you don’t have your id and password in R code and then you can easily share your R code with others without sharing your ID and password.</em></p>
-<p>&nbsp;</p>
 <p><strong><em>The below table is for connecting to RedShift01 Database</em></strong></p>
-<table class="table">
-<colgroup>
-<col style="width: 11%">
-<col style="width: 43%">
-<col style="width: 44%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td></td>
-<td style="text-align: left;"><strong><em><br>
-ODBC Based Connection</em></strong></td>
-<td style="text-align: left;"><strong><em>JDBC Based Connection (Recommended)</em></strong></td>
-</tr>
-<tr class="even">
-<td><strong><em>Libraries</em></strong></td>
-<td style="text-align: left;"><code>library(odbc)</code></td>
-<td style="text-align: left;"><code>library(RJDBC)</code></td>
-</tr>
-<tr class="odd">
-<td><strong><em>User ID and Password</em></strong></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><code>dbusr=Sys.getenv("DBUSER") dbpswd=Sys.getenv("DBPASSWD")</code></td>
-</tr>
-<tr class="even">
-<td></td>
-<td style="text-align: left;"><em><br>
-</em></td>
-<td style="text-align: left;"><p><code># Database URL</code></p>
-<p><code>url &lt;- "jdbc:redshift:iam://adrf-redshift01.cdy8ch2udktk.us-gov-west-1.redshift.amazonaws.com:5439/projects;</code></p>
-<p><code>loginToRp=urn:amazon:webservices:govcloud;</code></p>
-<p><code>ssl=true;AutoCreate=true;</code></p>
-<p><code>idp_host=adfs.adrf.net;</code></p>
-<p><code>idp_port=443;</code></p>
-<p><code>ssl_insecure=true;</code></p>
-<p><code>plugin_name=com.amazon.redshift.plugin.AdfsCredentialsProvider"</code></p>
-<p><code># Redshift JDBC Driver Setting</code></p>
-<p><code>driver &lt;- JDBC("com.amazon.redshift.jdbc42.Driver",</code></p>
-<p><code>classPath = "C:\\drivers\\redshift_withsdk\\redshift-jdbc42-2.1.0.12\\redshift-jdbc42-2.1.0.12.jar",</code></p>
-<p><code>identifier.quote="`")</code></p></td>
-</tr>
-<tr class="odd">
-<td><strong><em>Connection</em></strong></td>
-<td style="text-align: left;"><code>con &lt;- dbConnect(odbc(), "Redshift11_projects_DSN", uid = "adrf\\John.doe.p00002", pwd = 'xxxxxxxxxxxxxx')</code></td>
-<td style="text-align: left;"><p><code>conn &lt;- dbConnect(driver, url,</code></p>
-<p><code>dbusr, dbpswd)</code></p></td>
-</tr>
-</tbody>
-</table>
-<p><em>For the above code to work, please create a file name <strong>.Renviron</strong> in your user folder (user folder is something like&nbsp; i.e.&nbsp;u:\ John.doe.p00002) And <strong>.Renviron file</strong> should contain the following:</em></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>DBUSER<span class="ot">=</span><span class="st">'adrf\John.doe.p00002’</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="st">DBPASSWD='</span>xxxxxxxxxxxx<span class="st">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>&nbsp;<em>PLEASE replace user id and password with your project workspace specific user is and password.</em></p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RJDBC)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>dbusr<span class="ot">=</span><span class="fu">Sys.getenv</span>(<span class="st">"DBUSER"</span>)                                                                                  </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>dbpswd<span class="ot">=</span><span class="fu">Sys.getenv</span>(<span class="st">"DBPASSWD"</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Database URL</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"jdbc:redshift:iam://adrf-redshift01.cdy8ch2udktk.us-gov-west-1.redshift.amazonaws.com:5439/projects;"</span>,</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="st">"loginToRp=urn:amazon:webservices:govcloud;"</span>,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="st">"ssl=true;"</span>,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="st">"AutoCreate=true;"</span>,</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="st">"idp_host=adfs.adrf.net;"</span>,</span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="st">"idp_port=443;"</span>,</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="st">"ssl_insecure=true;"</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="st">"plugin_name=com.amazon.redshift.plugin.AdfsCredentialsProvider"</span>)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Redshift JDBC Driver Setting</span></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>driver <span class="ot">&lt;-</span> <span class="fu">JDBC</span>(<span class="st">"com.amazon.redshift.jdbc42.Driver"</span>,</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="at">classPath =</span> <span class="st">"C:</span><span class="sc">\\</span><span class="st">drivers</span><span class="sc">\\</span><span class="st">redshift_withsdk</span><span class="sc">\\</span><span class="st">redshift-jdbc42-2.1.0.12</span><span class="sc">\\</span><span class="st">redshift-jdbc42-2.1.0.12.jar"</span>,</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a><span class="at">identifier.quote=</span><span class="st">"`"</span>)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(driver, url, dbusr, dbpswd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>For the above code to work, please create a file name <strong>.Renviron</strong> in your user folder (user folder is something like i.e.&nbsp;u:\ John.doe.p00002) And <strong>.Renviron file</strong> should contain the following:</em></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>DBUSER<span class="ot">=</span><span class="st">'adrf\John.doe.p00002'</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>DBPASSWD<span class="ot">=</span><span class="st">'xxxxxxxxxxxx'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>PLEASE replace user id and password with your project workspace specific user is and password.</em></p>
 <p><em>This will ensure you don’t have your id and password in R code and then you can easily share your R code with others without sharing your ID and password.</em></p>
-<ul>
-<li><strong>Python Connection</strong></li>
-</ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyodbc</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>cnxn <span class="op">=</span> pyodbc.<span class="ex">connect</span>(<span class="st">'DSN=Redshift01_projects_DSN;</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="er">                      UID = adrf\\user.name.project; PWD = password')</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_sql(“SELECT <span class="op">*</span> FROM projects.schema_name.table_name”, cnxn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<ul>
-<li><strong>Stata Connection</strong></li>
-</ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">odbc</span> <span class="kw">load</span>, <span class="kw">exec</span>(“select * from PATH_TO_TABLE”) <span class="kw">clear</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dsn(“Redshift01_projects_DSN<span class="st">") user(“adrf\user.name.project) password(“password”)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="python-connection" class="level3">
+<h3 class="anchored" data-anchor-id="python-connection">Python Connection</h3>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyodbc</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>cnxn <span class="op">=</span> pyodbc.<span class="ex">connect</span>(<span class="st">'DSN=Redshift01_projects_DSN;</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="er">                      UID = adrf\\user.name.project; PWD = password')</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_sql(“SELECT <span class="op">*</span> FROM projects.schema_name.table_name”, cnxn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="stata-connection" class="level3">
+<h3 class="anchored" data-anchor-id="stata-connection">Stata Connection</h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">odbc</span> <span class="kw">load</span>, <span class="kw">exec</span>(“select * from PATH_TO_TABLE”) <span class="kw">clear</span> </span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>dsn(“Redshift01_projects_DSN<span class="st">") user(“adrf\user.name.project) password(“password”)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 </section>
 <section id="redshift-query-guidelines-for-researchers" class="level2">
 <h2 class="anchored" data-anchor-id="redshift-query-guidelines-for-researchers"><strong>Redshift Query Guidelines for Researchers</strong></h2>
 <p><em>Developing your query.</em> Here’s an example workflow to follow when developing a query.</p>
 <ol type="1">
-<li><p>Study the column and table metadata, which is accessible via the table definition.&nbsp; Each table definition can be displayed by clicking on the [+] next the table name.&nbsp;</p></li>
+<li><p>Study the column and table metadata, which is accessible via the table definition. Each table definition can be displayed by clicking on the [+] next the table name.&nbsp;</p></li>
 <li><p>To get a feel for a table’s values, SELECT * from the tables you’re working with and LIMIT your results (Keep the LIMIT applied as you refine your columns) or use (e.g., select&nbsp; * from [table name] LIMIT 1000 )</p></li>
 <li><p>Narrow down the columns to the minimal set required to answer your question.</p></li>
 <li><p>Apply any filters to those columns.</p></li>
-<li><p>If you need to aggregate data, aggregate a small number of rows&nbsp;</p></li>
+<li><p>If you need to aggregate data, aggregate a small number of rows</p></li>
 <li><p>Once you have a query returning the results you need, look for sections of the query to save as a Common Table Expression (CTE) to encapsulate that logic.</p></li>
 </ol>
 <section id="do-and-dont-do-best-practices" class="level3">
