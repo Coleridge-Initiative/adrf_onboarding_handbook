@@ -353,136 +353,78 @@ quit;</code></pre>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">value =</span> df_name, <span class="co">#name of df to write to Redshift</span></span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="at">overwrite =</span> <span class="cn">TRUE</span> <span class="co">#if you want to overwrite a current table, otherwise FALSE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong><em>The below table is for connecting to RedShift11 Database</em></strong></p>
-<table class="table">
-<colgroup>
-<col style="width: 11%">
-<col style="width: 43%">
-<col style="width: 44%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td></td>
-<td>ODBC Based Connection</td>
-<td>JDBC Based Connection(Recommended)</td>
-</tr>
-<tr class="even">
-<td><strong><em>Libraries</em></strong></td>
-<td><code>library(odbc)</code></td>
-<td><code>library(RJDBC)</code></td>
-</tr>
-<tr class="odd">
-<td><strong><em>User ID and Password</em></strong></td>
-<td></td>
-<td><p><code>dbusr=Sys.getenv("DBUSER")</code></p>
-<p><code>dbpswd=Sys.getenv("DBPASSWD")</code></p></td>
-</tr>
-<tr class="even">
-<td></td>
-<td></td>
-<td><p><code># Database URL</code></p>
-<p><code>url &lt;- "jdbc:redshift:iam://adrf-redshift11.cdy8ch2udktk.us-gov-west-1.redshift.amazonaws.com:5439/projects;</code></p>
-<p><code>loginToRp=urn:amazon:webservices:govcloud;</code></p>
-<p><code>ssl=true;</code></p>
-<p><code>AutoCreate=true;</code></p>
-<p><code>idp_host=adfs.adrf.net;</code></p>
-<p><code>idp_port=443;</code></p>
-<p><code>ssl_insecure=true;</code></p>
-<p><code>plugin_name=com.amazon.redshift.plugin.AdfsCredentialsProvider"</code></p>
-<p><code># Redshift JDBC Driver Setting</code></p>
-<p><code>driver &lt;- JDBC("com.amazon.redshift.jdbc42.Driver",</code></p>
-<p><code>classPath = "C:\\drivers\\redshift_withsdk\\redshift-jdbc42-2.1.0.12\\redshift-jdbc42-2.1.0.12.jar",</code></p>
-<p><code>identifier.quote="`")</code></p></td>
-</tr>
-<tr class="odd">
-<td><strong><em>Connection</em></strong></td>
-<td><code>con &lt;- dbConnect(odbc(),"Redshift11_projects_DSN",uid = "adrf\\John.doe.p00002", pwd = 'xxxxxxxxxxxxxx')</code></td>
-<td><code>conn &lt;- dbConnect(driver, url, dbusr, dbpswd)</code></td>
-</tr>
-</tbody>
-</table>
-<p><em>For the above code to work, please create a file name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>.Renviron</strong> in your user folder (user folder is something like&nbsp; i.e.&nbsp;u:\ John.doe.p00002) And <strong>.Renviron file</strong> should contain the following:</em></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>DBUSER<span class="ot">=</span><span class="st">'adrf\John.doe.p00002'</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>DBPASSWD<span class="ot">=</span><span class="st">'xxxxxxxxxxxx'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RJDBC)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dbusr<span class="ot">=</span><span class="fu">Sys.getenv</span>(<span class="st">"DBUSER"</span>)                                                                                  </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>dbpswd<span class="ot">=</span><span class="fu">Sys.getenv</span>(<span class="st">"DBPASSWD"</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Database URL</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"jdbc:redshift:iam://adrf-redshift11.cdy8ch2udktk.us-gov-west-1.redshift.amazonaws.com:5439/projects;"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="st">"loginToRp=urn:amazon:webservices:govcloud;"</span>,</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">"ssl=true;"</span>,</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="st">"AutoCreate=true;"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="st">"idp_host=adfs.adrf.net;"</span>,</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="st">"idp_port=443;"</span>,</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st">"ssl_insecure=true;"</span>,</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="st">"plugin_name=com.amazon.redshift.plugin.AdfsCredentialsProvider"</span>)</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Redshift JDBC Driver Setting</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>driver <span class="ot">&lt;-</span> <span class="fu">JDBC</span>(<span class="st">"com.amazon.redshift.jdbc42.Driver"</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="at">classPath =</span> <span class="st">"C:</span><span class="sc">\\</span><span class="st">drivers</span><span class="sc">\\</span><span class="st">redshift_withsdk</span><span class="sc">\\</span><span class="st">redshift-jdbc42-2.1.0.12</span><span class="sc">\\</span><span class="st">redshift-jdbc42-2.1.0.12.jar"</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="at">identifier.quote=</span><span class="st">"`"</span>)</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(driver, url, dbusr, dbpswd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>For the above code to work, please create a file name <strong>.Renviron</strong> in your user folder (user folder is something like i.e.&nbsp;u:\ John.doe.p00002) And <strong>.Renviron file</strong> should contain the following:</em></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>DBUSER<span class="ot">=</span><span class="st">'adrf\John.doe.p00002'</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>DBPASSWD<span class="ot">=</span><span class="st">'xxxxxxxxxxxx'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><em>PLEASE replace user id and password with your project workspace specific user is and password.</em></p>
 <p><em>This will ensure you don’t have your id and password in R code and then you can easily share your R code with others without sharing your ID and password.</em></p>
-<p>&nbsp;</p>
 <p><strong><em>The below table is for connecting to RedShift01 Database</em></strong></p>
-<table class="table">
-<colgroup>
-<col style="width: 11%">
-<col style="width: 43%">
-<col style="width: 44%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td></td>
-<td style="text-align: left;"><strong><em><br>
-ODBC Based Connection</em></strong></td>
-<td style="text-align: left;"><strong><em>JDBC Based Connection (Recommended)</em></strong></td>
-</tr>
-<tr class="even">
-<td><strong><em>Libraries</em></strong></td>
-<td style="text-align: left;"><code>library(odbc)</code></td>
-<td style="text-align: left;"><code>library(RJDBC)</code></td>
-</tr>
-<tr class="odd">
-<td><strong><em>User ID and Password</em></strong></td>
-<td style="text-align: left;"></td>
-<td style="text-align: left;"><code>dbusr=Sys.getenv("DBUSER") dbpswd=Sys.getenv("DBPASSWD")</code></td>
-</tr>
-<tr class="even">
-<td></td>
-<td style="text-align: left;"><em><br>
-</em></td>
-<td style="text-align: left;"><p><code># Database URL</code></p>
-<p><code>url &lt;- "jdbc:redshift:iam://adrf-redshift01.cdy8ch2udktk.us-gov-west-1.redshift.amazonaws.com:5439/projects;</code></p>
-<p><code>loginToRp=urn:amazon:webservices:govcloud;</code></p>
-<p><code>ssl=true;AutoCreate=true;</code></p>
-<p><code>idp_host=adfs.adrf.net;</code></p>
-<p><code>idp_port=443;</code></p>
-<p><code>ssl_insecure=true;</code></p>
-<p><code>plugin_name=com.amazon.redshift.plugin.AdfsCredentialsProvider"</code></p>
-<p><code># Redshift JDBC Driver Setting</code></p>
-<p><code>driver &lt;- JDBC("com.amazon.redshift.jdbc42.Driver",</code></p>
-<p><code>classPath = "C:\\drivers\\redshift_withsdk\\redshift-jdbc42-2.1.0.12\\redshift-jdbc42-2.1.0.12.jar",</code></p>
-<p><code>identifier.quote="`")</code></p></td>
-</tr>
-<tr class="odd">
-<td><strong><em>Connection</em></strong></td>
-<td style="text-align: left;"><code>con &lt;- dbConnect(odbc(), "Redshift11_projects_DSN", uid = "adrf\\John.doe.p00002", pwd = 'xxxxxxxxxxxxxx')</code></td>
-<td style="text-align: left;"><p><code>conn &lt;- dbConnect(driver, url,</code></p>
-<p><code>dbusr, dbpswd)</code></p></td>
-</tr>
-</tbody>
-</table>
-<p><em>For the above code to work, please create a file name <strong>.Renviron</strong> in your user folder (user folder is something like&nbsp; i.e.&nbsp;u:\ John.doe.p00002) And <strong>.Renviron file</strong> should contain the following:</em></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>DBUSER<span class="ot">=</span><span class="st">'adrf\John.doe.p00002’</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="st">DBPASSWD='</span>xxxxxxxxxxxx<span class="st">'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>&nbsp;<em>PLEASE replace user id and password with your project workspace specific user is and password.</em></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RJDBC)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dbusr<span class="ot">=</span><span class="fu">Sys.getenv</span>(<span class="st">"DBUSER"</span>)                                                                                  </span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>dbpswd<span class="ot">=</span><span class="fu">Sys.getenv</span>(<span class="st">"DBPASSWD"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Database URL</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(<span class="st">"jdbc:redshift:iam://adrf-redshift01.cdy8ch2udktk.us-gov-west-1.redshift.amazonaws.com:5439/projects;"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="st">"loginToRp=urn:amazon:webservices:govcloud;"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="st">"ssl=true;"</span>,</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="st">"AutoCreate=true;"</span>,</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="st">"idp_host=adfs.adrf.net;"</span>,</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="st">"idp_port=443;"</span>,</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="st">"ssl_insecure=true;"</span>,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="st">"plugin_name=com.amazon.redshift.plugin.AdfsCredentialsProvider"</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Redshift JDBC Driver Setting</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>driver <span class="ot">&lt;-</span> <span class="fu">JDBC</span>(<span class="st">"com.amazon.redshift.jdbc42.Driver"</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="at">classPath =</span> <span class="st">"C:</span><span class="sc">\\</span><span class="st">drivers</span><span class="sc">\\</span><span class="st">redshift_withsdk</span><span class="sc">\\</span><span class="st">redshift-jdbc42-2.1.0.12</span><span class="sc">\\</span><span class="st">redshift-jdbc42-2.1.0.12.jar"</span>,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="at">identifier.quote=</span><span class="st">"`"</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>conn <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(driver, url, dbusr, dbpswd)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>For the above code to work, please create a file name <strong>.Renviron</strong> in your user folder (user folder is something like i.e.&nbsp;u:\ John.doe.p00002) And <strong>.Renviron file</strong> should contain the following:</em></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>DBUSER<span class="ot">=</span><span class="st">'adrf\John.doe.p00002'</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>DBPASSWD<span class="ot">=</span><span class="st">'xxxxxxxxxxxx'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><em>PLEASE replace user id and password with your project workspace specific user is and password.</em></p>
 <p><em>This will ensure you don’t have your id and password in R code and then you can easily share your R code with others without sharing your ID and password.</em></p>
 <ul>
 <li><strong>Python Connection</strong></li>
 </ul>
-<div class="sourceCode" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyodbc</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>cnxn <span class="op">=</span> pyodbc.<span class="ex">connect</span>(<span class="st">'DSN=Redshift01_projects_DSN;</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="er">                      UID = adrf\\user.name.project; PWD = password')</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_sql(“SELECT <span class="op">*</span> FROM projects.schema_name.table_name”, cnxn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyodbc</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>cnxn <span class="op">=</span> pyodbc.<span class="ex">connect</span>(<span class="st">'DSN=Redshift01_projects_DSN;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="er">                      UID = adrf\\user.name.project; PWD = password')</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_sql(“SELECT <span class="op">*</span> FROM projects.schema_name.table_name”, cnxn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ul>
 <li><strong>Stata Connection</strong></li>
 </ul>
-<div class="sourceCode" id="cb6"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">odbc</span> <span class="kw">load</span>, <span class="kw">exec</span>(“select * from PATH_TO_TABLE”) <span class="kw">clear</span> </span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>dsn(“Redshift01_projects_DSN<span class="st">") user(“adrf\user.name.project) password(“password”)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode stata code-with-copy"><code class="sourceCode stata"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">odbc</span> <span class="kw">load</span>, <span class="kw">exec</span>(“select * from PATH_TO_TABLE”) <span class="kw">clear</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>dsn(“Redshift01_projects_DSN<span class="st">") user(“adrf\user.name.project) password(“password”)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="redshift-query-guidelines-for-researchers" class="level2">
 <h2 class="anchored" data-anchor-id="redshift-query-guidelines-for-researchers"><strong>Redshift Query Guidelines for Researchers</strong></h2>
 <p><em>Developing your query.</em> Here’s an example workflow to follow when developing a query.</p>
 <ol type="1">
-<li><p>Study the column and table metadata, which is accessible via the table definition.&nbsp; Each table definition can be displayed by clicking on the [+] next the table name.&nbsp;</p></li>
+<li><p>Study the column and table metadata, which is accessible via the table definition. Each table definition can be displayed by clicking on the [+] next the table name.&nbsp;</p></li>
 <li><p>To get a feel for a table’s values, SELECT * from the tables you’re working with and LIMIT your results (Keep the LIMIT applied as you refine your columns) or use (e.g., select&nbsp; * from [table name] LIMIT 1000 )</p></li>
 <li><p>Narrow down the columns to the minimal set required to answer your question.</p></li>
 <li><p>Apply any filters to those columns.</p></li>
-<li><p>If you need to aggregate data, aggregate a small number of rows&nbsp;</p></li>
+<li><p>If you need to aggregate data, aggregate a small number of rows</p></li>
 <li><p>Once you have a query returning the results you need, look for sections of the query to save as a Common Table Expression (CTE) to encapsulate that logic.</p></li>
 </ol>
 <section id="do-and-dont-do-best-practices" class="level3">

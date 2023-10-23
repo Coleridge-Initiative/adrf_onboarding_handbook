@@ -4,7 +4,7 @@ title: "Export guidelines"
 
 ## **Export Review Guidelines**
 
-To provide ADRF users with the ability to draw from sensitive data, results that are exported from the ADRF must meet rigorous standards meant to protect privacy and confidentiality. To ensure that those standards are met, the ADRF Export Review team reviews each request to ensure that it follows formal guidelines that are set by the respective agency providing the data in partnership with the Coleridge Initiative. Prior to moving data into the ADRF from the agency, the Export Review team suggests default guidelines to implement, based on standard statistical approaches in the U.S. government ^[1, 2](https://coleridgeinitiative.atlassian.net/wiki/spaces/ADRF/pages/1789886504 "/wiki/spaces/ADRF/pages/1789886504")^ as well as international standards ^[3, 4](https://coleridgeinitiative.atlassian.net/wiki/spaces/ADRF/pages/1789886504 "/wiki/spaces/ADRF/pages/1789886504")^, and ^[5](https://coleridgeinitiative.atlassian.net/wiki/spaces/ADRF/pages/1789886504 "/wiki/spaces/ADRF/pages/1789886504")^. The Data Steward from the agency supplying the data works with the team to amend these default rules in line with the agency's requirements. If you are unsure about the review guidelines for the data you are using in the ADRF or if you have any questions relating to exports, please reach out to support\@coleridgeinitiative.org before submitting an export request.
+To provide ADRF users with the ability to draw from sensitive data, results that are exported from the ADRF must meet rigorous standards meant to protect privacy and confidentiality. To ensure that those standards are met, the ADRF Export Review team reviews each request to ensure that it follows formal guidelines that are set by the respective agency providing the data in partnership with the Coleridge Initiative. Prior to moving data into the ADRF from the agency, the Export Review team suggests default guidelines to implement, based on standard statistical approaches in the U.S. government ^[1,2](references.qmd#References)^ as well as international standards ^[3,4](references.qmd#References)^, and ^[5](references.qmd#References)^. The Data Steward from the agency supplying the data works with the team to amend these default rules in line with the agency's requirements. If you are unsure about the review guidelines for the data you are using in the ADRF or if you have any questions relating to exports, please reach out to support\@coleridgeinitiative.org before submitting an export request.
 
 To learn more about limiting disclosure more generally, please refer to the [textbook](https://textbook.coleridgeinitiative.org/ "https://textbook.coleridgeinitiative.org/") or view the [videos](https://www.youtube.com/playlist?list=PLCtgqmGgzkEzwdPYKfrNHtOKFu3P5ErrU "https://www.youtube.com/playlist?list=PLCtgqmGgzkEzwdPYKfrNHtOKFu3P5ErrU").
 
@@ -30,17 +30,53 @@ To learn more about limiting disclosure more generally, please refer to the [tex
 
 2.  The review process can be delayed if the reviewer needs additional information or if the reviewer needs you to make changes to your code or output to meet the ADRF nondisclosure requirements.
 
+### Export Review Process
+
+The ADRF Export Review process typically involves two main stages:
+
+1.  Primary Review:
+
+This is an initial, cursory review of your documentation and exports to ensure they do not include micro-data. A primary review can take up to 5 business days, so please plan accordingly when submitting your materials.
+
+In cases where the reviewer has questions or requires additional information, the primary review may extend beyond 5 business days.
+
+2.  Secondary Review:
+
+This is a comprehensive review conducted by an approved Data Steward who has content knowledge for the data permissioned to your workspace.
+
+If your submission pertains to multiple data assets, it will require approval by each Data Steward before the material can be exported from the ADRF.
+
+### How to Check Your Export Review Status:
+
+If you've submitted an export request, you can easily check the status of your submission by following these steps:
+
+1.  Log into the ADRF.
+
+2.  Open the ADRF Export module.
+
+#### Status Descriptions:
+
+To help you better understand the different stages of the Export Review process, here are the status descriptions you may encounter:
+
+1.  Awaiting Reviewer:
+
+Your export is currently under primary review. If any issues arise during the primary review, your reviewer will notify you. Upon completion of the primary review, the secondary reviewer(s) will be notified.
+
+2.  Awaiting Secondary Review:
+
+Your export is currently under secondary review. If your submission pertains to multiple data assets, it will require a review by each Data Steward before being approved.
+
 ## **Preparing Data for Export**
+
+Each agency has specific disclosure review guidelines, especially with respect to the minimum allowable cell sizes for tables. Refer to these guidelines when preparing export requests. If you are unsure of what guidelines are in place for the dataset with which you are working in the ADRF, please reach out to [support\@coleridgeinitiative.org](mailto:support@coleridgeinitiative.org "mailto:support@coleridgeinitiative.org").
 
 ### Tables
 
 1.  Cell Sizes
 
-    1.  Each agency has specific disclosure review guidelines, especially with respect to the minimum allowable cell sizes for tables. Refer to these guidelines when preparing export requests. If you are unsure of what guidelines are in place for the dataset with which you are working in the ADRF, please reach out to [support\@coleridgeinitiative.org](mailto:support@coleridgeinitiative.org "mailto:support@coleridgeinitiative.org").
+    1.  For individual-level data, please report the number of observations from each cell. For individual-level data, the default rule is to suppress cells with fewer than 10 observations, unless otherwise directed by the guidelines of the agency that provided the data.
 
-    2.  For individual-level data, please report the number of observations from each cell. For individual-level data, the default rule is to suppress cells with fewer than 10 observations, unless otherwise directed by the guidelines of the agency that provided the data.
-
-    3.  If your table includes row or column totals or is dependent on a preceding or subsequent table, reviewers will need to take into account complementary disclosure risks---that is, whether the tables' totals, or the separate tables when read together, might disclose information about individuals in the data in a way that a single, simpler table would not. Reviewers will work with you by offering guidance on implementing any necessary complementary suppression techniques.
+    2.  If your table includes row or column totals or is dependent on a preceding or subsequent table, reviewers will need to take into account complementary disclosure risks---that is, whether the tables' totals, or the separate tables when read together, might disclose information about individuals in the data in a way that a single, simpler table would not. Reviewers will work with you by offering guidance on implementing any necessary complementary suppression techniques.
 
 2.  Weighted Data
 
