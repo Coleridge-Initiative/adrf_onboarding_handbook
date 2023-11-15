@@ -179,8 +179,7 @@ df = pd.read_sql(“SELECT * FROM projects.schema_name.table_name”, cnxn)
 ### Stata Connection
 
 ``` stata
-odbc load, exec(“select * from PATH_TO_TABLE”) clear 
-dsn(“Redshift01_projects_DSN") user(“adrf\user.name.project) password(“password”)
+odbc load, exec("select * from PATH_TO_TABLE") clear dsn("Redshift11_projects_DSN") user("adrf\user.name.project") password("password")
 ```
 
 ## **Redshift Query Guidelines for Researchers**
