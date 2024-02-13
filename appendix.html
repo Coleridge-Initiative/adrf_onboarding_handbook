@@ -298,7 +298,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><img src="images/ap2.png" class="img-fluid figure-img" alt="login"></p>
 </figure>
 </div>
-<p>All data is stored under schemas in the <strong><em>projects</em></strong> database and are accessible by the following programs:&nbsp;</p>
+<p>All data is stored under schemas in the <strong><em>projects</em></strong> database and are accessible by the following programs:</p>
 <section id="dbeaver" class="level3">
 <h3 class="anchored" data-anchor-id="dbeaver">DBeaver</h3>
 <p>To establish a connection to Redshift in DBeaver, first double click on the server you wish to connect to. In the example below I’m connecting to <code>Redshift11_projects</code>. Then a window will appear asking for your Username and Password. This will be your user folder name and include <code>adrf\</code> before the username. Then click OK. You will now have access to your data stored on the <code>Redshift11_projects</code> server.</p>
@@ -341,7 +341,7 @@ quit;</code></pre>
 <section id="r-connection" class="level3">
 <h3 class="anchored" data-anchor-id="r-connection">R Connection</h3>
 <p><strong>Best practices for loading large amounts of data in R</strong></p>
-<p>To ensure R can efficiently manage large amounts of data, please&nbsp;add the following&nbsp;lines of code to your R script before any packages are loaded:&nbsp;</p>
+<p>To ensure R can efficiently manage large amounts of data, please add the following lines of code to your R script before any packages are loaded:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">java.parameters =</span> <span class="fu">c</span>(<span class="st">"-XX:+UseConcMarkSweepGC"</span>, <span class="st">"-Xmx8192m"</span>)) <span class="fu">gc</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Best practices for writing tables to Redshift</strong></p>
 <p>When writing an R data frame to Redshift use the following code as an example:</p>
@@ -422,8 +422,8 @@ quit;</code></pre>
 <h2 class="anchored" data-anchor-id="redshift-query-guidelines-for-researchers"><strong>Redshift Query Guidelines for Researchers</strong></h2>
 <p><em>Developing your query.</em> Here’s an example workflow to follow when developing a query.</p>
 <ol type="1">
-<li><p>Study the column and table metadata, which is accessible via the table definition. Each table definition can be displayed by clicking on the [+] next the table name.&nbsp;</p></li>
-<li><p>To get a feel for a table’s values, SELECT * from the tables you’re working with and LIMIT your results (Keep the LIMIT applied as you refine your columns) or use (e.g., select&nbsp; * from [table name] LIMIT 1000 )</p></li>
+<li><p>Study the column and table metadata, which is accessible via the table definition. Each table definition can be displayed by clicking on the [+] next the table name.</p></li>
+<li><p>To get a feel for a table’s values, SELECT * from the tables you’re working with and LIMIT your results (Keep the LIMIT applied as you refine your columns) or use (e.g., select * from [table name] LIMIT 1000 )</p></li>
 <li><p>Narrow down the columns to the minimal set required to answer your question.</p></li>
 <li><p>Apply any filters to those columns.</p></li>
 <li><p>If you need to aggregate data, aggregate a small number of rows</p></li>
@@ -442,18 +442,18 @@ quit;</code></pre>
 </section>
 <section id="tip-2-always-fetch-limited-data-and-target-accurate-results" class="level4">
 <h4 class="anchored" data-anchor-id="tip-2-always-fetch-limited-data-and-target-accurate-results"><strong>Tip 2: Always fetch limited data and target accurate results</strong></h4>
-<p>Lesser the data retrieved, the faster the query will run. Rather than applying too many filters on the client-side, filter the data as much as possible at the server. This limits the data being sent on the wire and you’ll be able to see the results much faster.&nbsp; In Amazon Redshift use <strong>LIMIT (###)</strong> qualifier at the end of the query to limit records.</p>
-<p><code>SELECT &nbsp;col_A, col_B, col_C FROM projects.schema_name.table_name&nbsp; WHERE [apply some filter] LIMIT 1000</code></p>
+<p>Lesser the data retrieved, the faster the query will run. Rather than applying too many filters on the client-side, filter the data as much as possible at the server. This limits the data being sent on the wire and you’ll be able to see the results much faster. In Amazon Redshift use <strong>LIMIT (###)</strong> qualifier at the end of the query to limit records.</p>
+<p><code>SELECT col_A, col_B, col_C FROM projects.schema_name.table_name WHERE [apply some filter] LIMIT 1000</code></p>
 </section>
 <section id="tip-3-use-wildcard-characters-wisely" class="level4">
 <h4 class="anchored" data-anchor-id="tip-3-use-wildcard-characters-wisely"><strong>Tip 3: Use wildcard characters wisely</strong></h4>
 <p>Wildcard characters can be either used as a prefix or a suffix. Using leading wildcard (%) in combination with an ending wildcard will search all records for a match anywhere within the selected field.</p>
 <p><strong>Inefficient</strong></p>
 <p><code>Select col_A, col_B, col_C from projects.schema_name.table_name where col_A like '%BRO%'</code></p>
-<p>This query will pull the expected results of&nbsp;<strong>Brown Sugar, Brownie, Brown Rice</strong>&nbsp;and so on. However, it will also pull unexpected results, such as&nbsp;<strong>Country Brown, Lamb with Broth, Cream of Broccoli</strong>.&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p>This query will pull the expected results of<strong>Brown Sugar, Brownie, Brown Rice</strong>and so on. However, it will also pull unexpected results, such as<strong>Country Brown, Lamb with Broth, Cream of Broccoli</strong>.</p>
 <p><strong>Efficient</strong></p>
 <p><code>Select col_A, col_B, col_C from projects.schema_name.table_name where col_B like 'BRO%'.</code></p>
-<p>This query will pull only the expected results of&nbsp;<strong>Brownie, Brown Rice, Brown Sugar</strong> and so on.&nbsp;</p>
+<p>This query will pull only the expected results of<strong>Brownie, Brown Rice, Brown Sugar</strong> and so on.</p>
 </section>
 <section id="tip-4-does-my-record-exist" class="level4">
 <h4 class="anchored" data-anchor-id="tip-4-does-my-record-exist"><strong>Tip 4: Does My record exist?</strong></h4>
@@ -461,9 +461,9 @@ quit;</code></pre>
 <p><strong>Efficient</strong></p>
 <p><code>select col_A from projects.schema_name.table_name A where exists (select 1 from projects.schema_name.table_name B where A.col_A = B.col_A ) order by col_A;</code></p>
 </section>
-<section id="tip-5-avoid-correlated-subqueries" class="level4">
-<h4 class="anchored" data-anchor-id="tip-5-avoid-correlated-subqueries"><strong>Tip 5: Avoid&nbsp;correlated subqueries</strong></h4>
-<p>A correlated subquery depends on the parent or outer query. Since it executes row by row, it decreases the overall speed of the process.&nbsp;&nbsp;</p>
+<section id="tip-5-avoidcorrelated-subqueries" class="level4">
+<h4 class="anchored" data-anchor-id="tip-5-avoidcorrelated-subqueries"><strong>Tip 5: Avoidcorrelated subqueries</strong></h4>
+<p>A correlated subquery depends on the parent or outer query. Since it executes row by row, it decreases the overall speed of the process.</p>
 <p><strong>Inefficient</strong></p>
 <p><code>SELECT col_A, col_B, (SELECT col_C FROM projects.schema_name.table_name_a WHERE col_C = c.rma LIMIT 1) AS new_name FROM projects.schema_name.table_name_b</code></p>
 <p>Here, the problem is — the inner query is run for each row returned by the outer query. Going over the <strong>“table_name_b”</strong> table again and again for every row processed by the outer query creates process overhead. Instead, for Amazon Redshift query optimization, use JOIN to solve such problems.</p>
@@ -472,25 +472,25 @@ quit;</code></pre>
 </section>
 <section id="tip-6-avoid-using-amazon-redshift-function-in-the-where-condition" class="level4">
 <h4 class="anchored" data-anchor-id="tip-6-avoid-using-amazon-redshift-function-in-the-where-condition"><strong>Tip 6: Avoid using Amazon Redshift function in the where condition</strong></h4>
-<p>Often developers use functions or methods with their Amazon Redshift queries.&nbsp;</p>
+<p>Often developers use functions or methods with their Amazon Redshift queries.</p>
 <p><strong>Inefficient</strong></p>
-<p><code>SELECT col_A, col_B, col_C FROM projects.schema_name.table_name WHERE RIGHT(birth_date,4) = '1965' and&nbsp; LEFT(birth_date,2) = '07'</code></p>
-<p>Note that even if&nbsp;<strong>birth_date</strong> has an index, the above query changes the WHERE clause in such a way that this index cannot be used anymore.</p>
+<p><code>SELECT col_A, col_B, col_C FROM projects.schema_name.table_name WHERE RIGHT(birth_date,4) = '1965' and LEFT(birth_date,2) = '07'</code></p>
+<p>Note that even if<strong>birth_date</strong> has an index, the above query changes the WHERE clause in such a way that this index cannot be used anymore.</p>
 <p><strong>Efficient</strong></p>
 <p><code>SELECT col_A, col_B, col_C FROM projects.schema_name.table_name WHERE birth_date between '711965' and '7311965'</code></p>
 </section>
 <section id="tip-7-use-where-instead-of-having" class="level4">
 <h4 class="anchored" data-anchor-id="tip-7-use-where-instead-of-having"><strong>Tip 7: Use WHERE instead of HAVING</strong></h4>
-<p>HAVING clause filters the rows after all the rows are selected. It is just like a filter. Do not use the HAVING clause for any other purposes.&nbsp;It is useful when performing group bys and aggregations.</p>
+<p>HAVING clause filters the rows after all the rows are selected. It is just like a filter. Do not use the HAVING clause for any other purposes.It is useful when performing group bys and aggregations.</p>
 </section>
 <section id="tip-8-use-temp-tables-when-merging-large-data-sets" class="level4">
 <h4 class="anchored" data-anchor-id="tip-8-use-temp-tables-when-merging-large-data-sets"><strong>Tip 8: Use temp tables when merging large data sets</strong></h4>
-<p>Creating local temp tables will limit the number of records in large table joins and merges.&nbsp; Instead of performing large table joins, one can break out the analysis by performing the analysis in two steps: 1) create a temp table with limiting criteria to create a smaller / filtered result set.&nbsp; 2) join the temp table to the second large table to limit the number of records being fetched and to speed up the query. This is especially useful when there are no indexes on the join columns.</p>
+<p>Creating local temp tables will limit the number of records in large table joins and merges. Instead of performing large table joins, one can break out the analysis by performing the analysis in two steps: 1) create a temp table with limiting criteria to create a smaller / filtered result set. 2) join the temp table to the second large table to limit the number of records being fetched and to speed up the query. This is especially useful when there are no indexes on the join columns.</p>
 <p><strong>Inefficient</strong></p>
-<p><code>SELECT col_A, col_B, sum(col_C) total FROM projects.schema_name.table_name&nbsp; pd&nbsp; INNER JOIN&nbsp; projects.schema_name.table_name st&nbsp; ON&nbsp; pd.col_A=st.col_B WHERE pd.col_C like 'DOG%' GROUP BY pd.col_A, pd.col_B, pd.col_C</code></p>
-<p>Note that even if joining column <strong>col_A</strong> has an index, the col_B column does not.&nbsp; In addition, because the size of some tables can be large, one should limit the size of the join table by first building a smaller filtered #temp table then performing the table joins.&nbsp;&nbsp;</p>
+<p><code>SELECT col_A, col_B, sum(col_C) total FROM projects.schema_name.table_name pd INNER JOIN projects.schema_name.table_name st ON pd.col_A=st.col_B WHERE pd.col_C like 'DOG%' GROUP BY pd.col_A, pd.col_B, pd.col_C</code></p>
+<p>Note that even if joining column <strong>col_A</strong> has an index, the col_B column does not. In addition, because the size of some tables can be large, one should limit the size of the join table by first building a smaller filtered #temp table then performing the table joins.</p>
 <p><strong>Efficient</strong></p>
-<p><code>SET search_path = schema_name;&nbsp; -- this statement sets the default schema/database to projects.schema_name</code></p>
+<p><code>SET search_path = schema_name; -- this statement sets the default schema/database to projects.schema_name</code></p>
 <p><strong>Step 1:</strong></p>
 <p><code>CREATE TEMP TABLE temp_table (</code></p>
 <p><code>col_A varchar(14),</code></p>
@@ -500,7 +500,7 @@ quit;</code></pre>
 <p><code>INSERT INTO temp_table SELECT col_A, col_B, col_C</code></p>
 <p><code>FROM projects.schema_name.table_name WHERE col_B like 'CAT%';</code></p>
 <p><strong>Step 3:</strong></p>
-<p><code>SELECT pd.col_A, pd.col_B, pd.col_C, sum(col_C) as total FROM &nbsp;temp_table pd&nbsp; INNER JOIN&nbsp; projects.schema_name.table_name st&nbsp; ON pd.col_A=st.col_B&nbsp; GROUP BY pd.col_A, pd.col_B, pd.col_C;</code></p>
+<p><code>SELECT pd.col_A, pd.col_B, pd.col_C, sum(col_C) as total FROM temp_table pd INNER JOIN projects.schema_name.table_name st ON pd.col_A=st.col_B GROUP BY pd.col_A, pd.col_B, pd.col_C;</code></p>
 <p><code>DROP TABLE temp_table;</code></p>
 <p>Note always drop the temp table after the analysis is complete to release data from physical memory.</p>
 </section>
@@ -508,9 +508,9 @@ quit;</code></pre>
 <section id="other-pointers-for-best-database-performance" class="level3">
 <h3 class="anchored" data-anchor-id="other-pointers-for-best-database-performance"><strong><em>Other Pointers for best database performance</em></strong></h3>
 <p><strong><em>SELECT columns, not stars.</em></strong> Specify the columns you’d like to include in the results (though it’s fine to use * when first exploring tables — just remember to LIMIT your results).</p>
-<p><strong><em>Avoid using SELECT DISTINCT</em></strong>. SELECT DISTINCT command in Amazon Redshift used for fetching unique results and remove duplicate rows in the relation. To achieve this task, it basically groups together related rows and then removes them. GROUP BY operation is a costly operation. To fetch distinct rows and remove duplicate rows, use more attributes in the SELECT operation.&nbsp;</p>
+<p><strong><em>Avoid using SELECT DISTINCT</em></strong>. SELECT DISTINCT command in Amazon Redshift used for fetching unique results and remove duplicate rows in the relation. To achieve this task, it basically groups together related rows and then removes them. GROUP BY operation is a costly operation. To fetch distinct rows and remove duplicate rows, use more attributes in the SELECT operation.</p>
 <p><strong><em>Inner joins vs WHERE clause.</em></strong> Use inner join for merging two or more tables rather than using the WHERE clause. WHERE clause creates the CROSS join/ CARTESIAN product for merging tables. CARTESIAN product of two tables takes a lot of time.</p>
-<p><strong><em>IN versus EXISTS.</em></strong> IN operator is costlier than EXISTS in terms of scans especially when the result of the subquery is a large dataset. We should try to use EXISTS rather than using IN for fetching results with a subquery.&nbsp;</p>
+<p><strong><em>IN versus EXISTS.</em></strong> IN operator is costlier than EXISTS in terms of scans especially when the result of the subquery is a large dataset. We should try to use EXISTS rather than using IN for fetching results with a subquery.</p>
 <p><strong>Avoid</strong></p>
 <p><code>SELECT col_A , col_B, col_C</code></p>
 <p><code>FROM projects.schema_name.table_name</code></p>
@@ -540,7 +540,7 @@ quit;</code></pre>
 <p><code>SELECT A.col_A , B.col_B, B.col_C</code></p>
 <p><code>FROM projects.schema_name.table_name as A</code></p>
 <p><code>JOIN projects.schema_name.table_name B ON A.col_A = B.col_B</code></p>
-<p><em>Alias multiple tables.</em> When querying multiple tables, use aliases, and employ those aliases in your select statement, so the database (and your reader) doesn’t need to parse which column belongs to which table.&nbsp;</p>
+<p><em>Alias multiple tables.</em> When querying multiple tables, use aliases, and employ those aliases in your select statement, so the database (and your reader) doesn’t need to parse which column belongs to which table.</p>
 <p><strong>Avoid</strong></p>
 <p><code>SET search_path = schema_name;</code>-- this statement sets the default schema/database to projects.schema_name</p>
 <p><code>SELECT col_A , col_B, col_C</code></p>
@@ -571,11 +571,11 @@ quit;</code></pre>
 <section id="amazon-redshift-best-practices-for-having" class="level3">
 <h3 class="anchored" data-anchor-id="amazon-redshift-best-practices-for-having"><strong>Amazon Redshift best practices for HAVING</strong></h3>
 <p><em>Only use HAVING for filtering aggregates.</em> Before HAVING, filter out values using a WHERE clause before aggregating and grouping those values.</p>
-<p><code>SELECT&nbsp; col_A, sum(col_B) as total_amt</code></p>
-<p><code>FROM&nbsp; projects.schema_name.table_name</code></p>
-<p><code>WHERE&nbsp; col_C = 1617 and col_A='key'</code></p>
+<p><code>SELECT col_A, sum(col_B) as total_amt</code></p>
+<p><code>FROM projects.schema_name.table_name</code></p>
+<p><code>WHERE col_C = 1617 and col_A='key'</code></p>
 <p><code>GROUP BY col_A</code></p>
-<p><code>HAVING&nbsp; sum(col_D)&gt; 0</code></p>
+<p><code>HAVING sum(col_D)&gt; 0</code></p>
 </section>
 <section id="amazon-redshift-best-practices-for-union" class="level3">
 <h3 class="anchored" data-anchor-id="amazon-redshift-best-practices-for-union"><strong>Amazon Redshift best practices for UNION</strong></h3>
@@ -588,27 +588,27 @@ quit;</code></pre>
 <p><code>SELECT col_A, col_B, col_C</code></p>
 <p><code>FROM projects.schema_name.table_name</code></p>
 <p><code>WHERE col_B IN</code></p>
-<p><code>(SELECT col_A&nbsp; FROM projects.schema_name.table_name</code></p>
+<p><code>(SELECT col_A FROM projects.schema_name.table_name</code></p>
 <p><code>WHERE col_C = 534905 ORDER BY col_B);</code></p>
 <p><strong>Prefer</strong></p>
 <p><code>SELECT col_A, col_B, col_C</code></p>
 <p><code>FROM projects.schema_name.table_name</code></p>
 <p><code>WHERE col_A IN</code></p>
-<p><code>(SELECT col_B&nbsp; FROM projects.schema_name.table_name</code></p>
+<p><code>(SELECT col_B FROM projects.schema_name.table_name</code></p>
 <p><code>WHERE col_C = 534905);</code></p>
 </section>
 <section id="troubleshooting-queries" class="level3">
 <h3 class="anchored" data-anchor-id="troubleshooting-queries"><strong>Troubleshooting Queries</strong></h3>
 <p>There are several metrics for calculating the cost of the query in terms of storage, time, CPU utilization. <em>However, these metrics require DBA permissions to execute.</em> Follow up with ADRF support to get additional assistance.</p>
-<p><strong>Using the SVL_QUERY_SUMMARY view:</strong> To analyze query summary information by stream, do the following:&nbsp;&nbsp;&nbsp;&nbsp;</p>
-<p><strong>Step 1:</strong> <code>select query, elapsed, substring&nbsp; from svl_qlog order by query desc limit 5;</code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+<p><strong>Using the SVL_QUERY_SUMMARY view:</strong> To analyze query summary information by stream, do the following:</p>
+<p><strong>Step 1:</strong> <code>select query, elapsed, substring from svl_qlog order by query desc limit 5;</code></p>
 <p><strong>Step 2:</strong> <code>select * from svl_query_summary where query = MyQueryID order by stm, seg, step;</code></p>
-<p><strong><em>Execution Plan:</em></strong>&nbsp; Lastly, an execution plan is a detailed step-by-step processing plan used by the optimizer to fetch the rows. It can be enabled in the database using the following procedure:&nbsp;</p>
+<p><strong><em>Execution Plan:</em></strong> Lastly, an execution plan is a detailed step-by-step processing plan used by the optimizer to fetch the rows. It can be enabled in the database using the following procedure:</p>
 <ol type="1">
 <li><p>Click on SQL Editor in the menu bar.</p></li>
 <li><p>Click on Explain Execution Plan.</p></li>
 </ol>
-<p>It helps to analyze the major phases in the execution of a query. We can also find out which part of the execution is taking more time and optimize that sub-part. The execution plan shows which tables were accessed, what index scans were performed for fetching the data. If joins are present it shows how these tables were merged. Further, we can see a more detailed analysis view of each sub-operation performed during query execution.&nbsp;&nbsp;</p>
+<p>It helps to analyze the major phases in the execution of a query. We can also find out which part of the execution is taking more time and optimize that sub-part. The execution plan shows which tables were accessed, what index scans were performed for fetching the data. If joins are present it shows how these tables were merged. Further, we can see a more detailed analysis view of each sub-operation performed during query execution.</p>
 </section>
 </section>
 <section id="aws-sources" class="level2">
