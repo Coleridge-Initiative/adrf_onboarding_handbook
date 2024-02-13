@@ -18,7 +18,7 @@ The password needed to access Redshift is the second password entered when loggi
 
 ![](images/ap2.png){fig-alt="login" fig-align="center"}
 
-All data is stored under schemas in the ***projects*** database and are accessible by the following programs: 
+All data is stored under schemas in the ***projects*** database and are accessible by the following programs:
 
 ### DBeaver
 
@@ -74,7 +74,7 @@ quit;
 
 **Best practices for loading large amounts of data in R**
 
-To ensure R can efficiently manage large amounts of data, please add the following lines of code to your R script before any packages are loaded: 
+To ensure R can efficiently manage large amounts of data, please add the following lines of code to your R script before any packages are loaded:
 
 ``` r
 options(java.parameters = c("-XX:+UseConcMarkSweepGC", "-Xmx8192m")) gc()
@@ -186,9 +186,9 @@ odbc load, exec("select * from PATH_TO_TABLE") clear dsn("Redshift11_projects_DS
 
 *Developing your query.* Here's an example workflow to follow when developing a query.
 
-1.  Study the column and table metadata, which is accessible via the table definition. Each table definition can be displayed by clicking on the \[+\] next the table name. 
+1.  Study the column and table metadata, which is accessible via the table definition. Each table definition can be displayed by clicking on the \[+\] next the table name.
 
-2.  To get a feel for a table's values, SELECT \* from the tables you're working with and LIMIT your results (Keep the LIMIT applied as you refine your columns) or use (e.g., select  \* from \[table name\] LIMIT 1000 )
+2.  To get a feel for a table's values, SELECT \* from the tables you're working with and LIMIT your results (Keep the LIMIT applied as you refine your columns) or use (e.g., select \* from \[table name\] LIMIT 1000 )
 
 3.  Narrow down the columns to the minimal set required to answer your question.
 
@@ -216,9 +216,9 @@ This query fetches all the data stored in the table you choose which might not b
 
 #### **Tip 2: Always fetch limited data and target accurate results**
 
-Lesser the data retrieved, the faster the query will run. Rather than applying too many filters on the client-side, filter the data as much as possible at the server. This limits the data being sent on the wire and you'll be able to see the results much faster.  In Amazon Redshift use **LIMIT (###)** qualifier at the end of the query to limit records.
+Lesser the data retrieved, the faster the query will run. Rather than applying too many filters on the client-side, filter the data as much as possible at the server. This limits the data being sent on the wire and you'll be able to see the results much faster. In Amazon Redshift use **LIMIT (###)** qualifier at the end of the query to limit records.
 
-`SELECT  col_A, col_B, col_C FROM projects.schema_name.table_name  WHERE [apply some filter] LIMIT 1000`
+`SELECT col_A, col_B, col_C FROM projects.schema_name.table_name WHERE [apply some filter] LIMIT 1000`
 
 #### **Tip 3: Use wildcard characters wisely**
 
@@ -228,13 +228,13 @@ Wildcard characters can be either used as a prefix or a suffix. Using leading wi
 
 `Select col_A, col_B, col_C from projects.schema_name.table_name where col_A like '%BRO%'`
 
-This query will pull the expected results of **Brown Sugar, Brownie, Brown Rice** and so on. However, it will also pull unexpected results, such as **Country Brown, Lamb with Broth, Cream of Broccoli**.    
+This query will pull the expected results of**Brown Sugar, Brownie, Brown Rice**and so on. However, it will also pull unexpected results, such as**Country Brown, Lamb with Broth, Cream of Broccoli**.
 
 **Efficient**
 
 `Select col_A, col_B, col_C from projects.schema_name.table_name where col_B like 'BRO%'.`
 
-This query will pull only the expected results of **Brownie, Brown Rice, Brown Sugar** and so on. 
+This query will pull only the expected results of**Brownie, Brown Rice, Brown Sugar** and so on.
 
 #### **Tip 4: Does My record exist?**
 
@@ -244,9 +244,9 @@ Normally, developers use EXISTS() or COUNT() queries for matching a record entry
 
 `select col_A from projects.schema_name.table_name A where exists (select 1 from projects.schema_name.table_name B where A.col_A = B.col_A ) order by col_A;`
 
-#### **Tip 5: Avoid correlated subqueries**
+#### **Tip 5: Avoidcorrelated subqueries**
 
-A correlated subquery depends on the parent or outer query. Since it executes row by row, it decreases the overall speed of the process.  
+A correlated subquery depends on the parent or outer query. Since it executes row by row, it decreases the overall speed of the process.
 
 **Inefficient**
 
@@ -260,13 +260,13 @@ Here, the problem is --- the inner query is run for each row returned by the out
 
 #### **Tip 6: Avoid using Amazon Redshift function in the where condition**
 
-Often developers use functions or methods with their Amazon Redshift queries. 
+Often developers use functions or methods with their Amazon Redshift queries.
 
 **Inefficient**
 
-`SELECT col_A, col_B, col_C FROM projects.schema_name.table_name WHERE RIGHT(birth_date,4) = '1965' and  LEFT(birth_date,2) = '07'`
+`SELECT col_A, col_B, col_C FROM projects.schema_name.table_name WHERE RIGHT(birth_date,4) = '1965' and LEFT(birth_date,2) = '07'`
 
-Note that even if **birth_date** has an index, the above query changes the WHERE clause in such a way that this index cannot be used anymore.
+Note that even if**birth_date** has an index, the above query changes the WHERE clause in such a way that this index cannot be used anymore.
 
 **Efficient**
 
@@ -274,21 +274,21 @@ Note that even if **birth_date** has an index, the above query changes the WHER
 
 #### **Tip 7: Use WHERE instead of HAVING**
 
-HAVING clause filters the rows after all the rows are selected. It is just like a filter. Do not use the HAVING clause for any other purposes. It is useful when performing group bys and aggregations.
+HAVING clause filters the rows after all the rows are selected. It is just like a filter. Do not use the HAVING clause for any other purposes.It is useful when performing group bys and aggregations.
 
 #### **Tip 8: Use temp tables when merging large data sets**
 
-Creating local temp tables will limit the number of records in large table joins and merges.  Instead of performing large table joins, one can break out the analysis by performing the analysis in two steps: 1) create a temp table with limiting criteria to create a smaller / filtered result set.  2) join the temp table to the second large table to limit the number of records being fetched and to speed up the query. This is especially useful when there are no indexes on the join columns.
+Creating local temp tables will limit the number of records in large table joins and merges. Instead of performing large table joins, one can break out the analysis by performing the analysis in two steps: 1) create a temp table with limiting criteria to create a smaller / filtered result set. 2) join the temp table to the second large table to limit the number of records being fetched and to speed up the query. This is especially useful when there are no indexes on the join columns.
 
 **Inefficient**
 
-`SELECT col_A, col_B, sum(col_C) total FROM projects.schema_name.table_name  pd  INNER JOIN  projects.schema_name.table_name st  ON  pd.col_A=st.col_B WHERE pd.col_C like 'DOG%' GROUP BY pd.col_A, pd.col_B, pd.col_C`
+`SELECT col_A, col_B, sum(col_C) total FROM projects.schema_name.table_name pd INNER JOIN projects.schema_name.table_name st ON pd.col_A=st.col_B WHERE pd.col_C like 'DOG%' GROUP BY pd.col_A, pd.col_B, pd.col_C`
 
-Note that even if joining column **col_A** has an index, the col_B column does not.  In addition, because the size of some tables can be large, one should limit the size of the join table by first building a smaller filtered #temp table then performing the table joins.  
+Note that even if joining column **col_A** has an index, the col_B column does not. In addition, because the size of some tables can be large, one should limit the size of the join table by first building a smaller filtered #temp table then performing the table joins.
 
 **Efficient**
 
-`SET search_path = schema_name;  -- this statement sets the default schema/database to projects.schema_name`
+`SET search_path = schema_name; -- this statement sets the default schema/database to projects.schema_name`
 
 **Step 1:**
 
@@ -308,7 +308,7 @@ Note that even if joining column **col_A** has an index, the col_B column does n
 
 **Step 3:**
 
-`SELECT pd.col_A, pd.col_B, pd.col_C, sum(col_C) as total FROM  temp_table pd  INNER JOIN  projects.schema_name.table_name st  ON pd.col_A=st.col_B  GROUP BY pd.col_A, pd.col_B, pd.col_C;`
+`SELECT pd.col_A, pd.col_B, pd.col_C, sum(col_C) as total FROM temp_table pd INNER JOIN projects.schema_name.table_name st ON pd.col_A=st.col_B GROUP BY pd.col_A, pd.col_B, pd.col_C;`
 
 `DROP TABLE temp_table;`
 
@@ -318,11 +318,11 @@ Note always drop the temp table after the analysis is complete to release data f
 
 ***SELECT columns, not stars.*** Specify the columns you'd like to include in the results (though it's fine to use \* when first exploring tables --- just remember to LIMIT your results).
 
-***Avoid using SELECT DISTINCT***. SELECT DISTINCT command in Amazon Redshift used for fetching unique results and remove duplicate rows in the relation. To achieve this task, it basically groups together related rows and then removes them. GROUP BY operation is a costly operation. To fetch distinct rows and remove duplicate rows, use more attributes in the SELECT operation. 
+***Avoid using SELECT DISTINCT***. SELECT DISTINCT command in Amazon Redshift used for fetching unique results and remove duplicate rows in the relation. To achieve this task, it basically groups together related rows and then removes them. GROUP BY operation is a costly operation. To fetch distinct rows and remove duplicate rows, use more attributes in the SELECT operation.
 
 ***Inner joins vs WHERE clause.*** Use inner join for merging two or more tables rather than using the WHERE clause. WHERE clause creates the CROSS join/ CARTESIAN product for merging tables. CARTESIAN product of two tables takes a lot of time.
 
-***IN versus EXISTS.*** IN operator is costlier than EXISTS in terms of scans especially when the result of the subquery is a large dataset. We should try to use EXISTS rather than using IN for fetching results with a subquery. 
+***IN versus EXISTS.*** IN operator is costlier than EXISTS in terms of scans especially when the result of the subquery is a large dataset. We should try to use EXISTS rather than using IN for fetching results with a subquery.
 
 **Avoid**
 
@@ -374,7 +374,7 @@ Query optimizers can change the order of the following list, but this general li
 
 `JOIN projects.schema_name.table_name B ON A.col_A = B.col_B`
 
-*Alias multiple tables.* When querying multiple tables, use aliases, and employ those aliases in your select statement, so the database (and your reader) doesn't need to parse which column belongs to which table. 
+*Alias multiple tables.* When querying multiple tables, use aliases, and employ those aliases in your select statement, so the database (and your reader) doesn't need to parse which column belongs to which table.
 
 **Avoid**
 
@@ -424,15 +424,15 @@ Query optimizers can change the order of the following list, but this general li
 
 *Only use HAVING for filtering aggregates.* Before HAVING, filter out values using a WHERE clause before aggregating and grouping those values.
 
-`SELECT  col_A, sum(col_B) as total_amt`
+`SELECT col_A, sum(col_B) as total_amt`
 
-`FROM  projects.schema_name.table_name`
+`FROM projects.schema_name.table_name`
 
-`WHERE  col_C = 1617 and col_A='key'`
+`WHERE col_C = 1617 and col_A='key'`
 
 `GROUP BY col_A`
 
-`HAVING  sum(col_D)> 0`
+`HAVING sum(col_D)> 0`
 
 ### **Amazon Redshift best practices for UNION**
 
@@ -450,7 +450,7 @@ Query optimizers can change the order of the following list, but this general li
 
 `WHERE col_B IN`
 
-`(SELECT col_A  FROM projects.schema_name.table_name`
+`(SELECT col_A FROM projects.schema_name.table_name`
 
 `WHERE col_C = 534905 ORDER BY col_B);`
 
@@ -462,7 +462,7 @@ Query optimizers can change the order of the following list, but this general li
 
 `WHERE col_A IN`
 
-`(SELECT col_B  FROM projects.schema_name.table_name`
+`(SELECT col_B FROM projects.schema_name.table_name`
 
 `WHERE col_C = 534905);`
 
@@ -470,19 +470,19 @@ Query optimizers can change the order of the following list, but this general li
 
 There are several metrics for calculating the cost of the query in terms of storage, time, CPU utilization. *However, these metrics require DBA permissions to execute.* Follow up with ADRF support to get additional assistance.
 
-**Using the SVL_QUERY_SUMMARY view:** To analyze query summary information by stream, do the following:    
+**Using the SVL_QUERY_SUMMARY view:** To analyze query summary information by stream, do the following:
 
-**Step 1:** `select query, elapsed, substring  from svl_qlog order by query desc limit 5;`       
+**Step 1:** `select query, elapsed, substring from svl_qlog order by query desc limit 5;`
 
 **Step 2:** `select * from svl_query_summary where query = MyQueryID order by stm, seg, step;`
 
-***Execution Plan:***  Lastly, an execution plan is a detailed step-by-step processing plan used by the optimizer to fetch the rows. It can be enabled in the database using the following procedure: 
+***Execution Plan:*** Lastly, an execution plan is a detailed step-by-step processing plan used by the optimizer to fetch the rows. It can be enabled in the database using the following procedure:
 
 1.  Click on SQL Editor in the menu bar.
 
 2.  Click on Explain Execution Plan.
 
-It helps to analyze the major phases in the execution of a query. We can also find out which part of the execution is taking more time and optimize that sub-part. The execution plan shows which tables were accessed, what index scans were performed for fetching the data. If joins are present it shows how these tables were merged. Further, we can see a more detailed analysis view of each sub-operation performed during query execution.  
+It helps to analyze the major phases in the execution of a query. We can also find out which part of the execution is taking more time and optimize that sub-part. The execution plan shows which tables were accessed, what index scans were performed for fetching the data. If joins are present it shows how these tables were merged. Further, we can see a more detailed analysis view of each sub-operation performed during query execution.
 
 ## **AWS Sources**
 
