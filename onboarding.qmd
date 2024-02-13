@@ -2,9 +2,9 @@
 title: "Onboarding Modules and Security Training"
 ---
 
-## **Data Stewardship App**
+## **Management Portal**
 
-Thee Data Stewardship web-based application is positioned primarily as the management and monitoring console for project and data stewards. It provides detailed insight on project configurations, user activity, user onboarding status, and overall cost of a project on the ADRF. We focus on four primary pillars of information a Project/Data Steward most often focuses on:
+The Management Portal web-based application is positioned primarily as the management and monitoring console for project and data stewards. It provides detailed insight on project configurations, user activity, user onboarding status, and overall cost of a project on the ADRF. We focus on four primary pillars of information a Project/Data Steward most often focuses on:
 
 -   People -- Who are the members of projects, how often do they use the ADRF, what exports have they requested and their status, estimated cost per person/project for current month and for the project since inception, and detailed usage metrics.
 
@@ -14,22 +14,98 @@ Thee Data Stewardship web-based application is positioned primarily as the manag
 
 -   Agreements -- What agreements are related to these projects, indication of each member's signing status, members pending signature, and term (dates) covered by the agreement(s).
 
-As mentioned, the data stewardship application will track your ADRF usage. The app will also consolidate your ADRF Terms of Use, Security Training Quiz, and Security Training Video into one place. In order to complete ADRF onboarding, all three of the mentioned tasks are to be completed by the user (researcher). To access the Data Stewardship app, log in using your credentials at [https://adrf.okta.com](https://adrf.okta.com/ "https://adrf.okta.com") and click on the Data Stewardship icon. See picture below:
+As mentioned, the Management Portal application will track your ADRF usage. The protal will also consolidate your ADRF Terms of Use, Security Training Quiz, and Security Training Video into one place. In order to complete ADRF onboarding, all three of the mentioned tasks are to be completed by the user (researcher). To access the Management Portal, log in using your credentials at [https://adrf.okta.com](https://adrf.okta.com/ "https://adrf.okta.com") and click on the ADRF Management Portal icon. See picture below:
 
-![](images/do1.png){fig-alt="Data stewardship app within workspace" fig-align="center"}
+![](images/mp_icon.png){fig-alt="Data stewardship app within workspace" fig-align="center"}
 
-Once inside the Data Stewardship app, you have access to your personal workspace sessions statistics and the three tasks. See the example below:
+Once inside the Management Portal, you have access to your personal workspace sessions statistics along with admin tasks such as the three onboarding tasks and password management. See the example below:
 
-![](images/do2.png){fig-alt="Personal session statistics"}
+![](images/mp_home.png){fig-alt="Personal session statistics"}
 
-## **ADRF - Terms of Use**
+## Accessing the Onboarding Tasks
 
-The Terms of Use need to be completed before you are given access to the data and project sace inside the ADRF. To complete ADRF Terms of Use, open the Data Stewardship app and click on ADRF - Terms of Use. This will direct you to an Docusign site to complete the signing of the agreement.
+1.  Log in to the Management Portal
+2.  Click on "Admin Tasks" in the left navigation menu.
 
-## **Security Training Video**
+![](images/admin_tasks.png){fig-alt="ADRF Management Portal"}
 
-The Security Training Video needs to be completed as well. To complete the training, open the Data Stewardship app and click on Security Training Video. This will direct you to the video; click Mark Complete when you have completed this training.
+3.  Click on "Complete Onboarding".
 
-## **Security Training Quiz**
+![](images/complete_ob.png){fig-alt="Complete Onboarding"}
 
-The Security Training Quiz needs to be completed after the Security Training Video. To complete the train- ing, open the Data Stewardship app and click on Security Training Quiz. This will direct you to the quiz, where you must answer five out of six questions correctly to pass.
+4.  This will load the Onboarding Tasks window.
+
+![](images/ob_tasks_window.png){fig-alt="Onboarding Tasks Window"}
+
+5.  Click on each individual task to complete it.
+
+### **Signing the ADRF Terms of Use Agreement**
+
+The Terms of Use need to be completed before you are given access to the data and project space inside the ADRF. To complete ADRF Terms of Use, complete the following steps:
+
+1.  Click on the "Terms of Use" tile.
+
+![](images/terms_of_use_tile.png){fig-alt="Terms of Use Tile"}
+
+2.  Click on "Sign with DocuSign"
+
+![](images/sign_docuSign.png){fig-alt="Sign with DocuSign"}
+
+3.  You will then be redirected to the DocuSign signing page. Click "Continue" on the upper right corner.
+
+![](images/docusign_continue.png){fig-alt="Continue with DocuSign"}
+
+4.  Click "Start" to begin.
+
+![](images/start.png){fig-alt="DocuSign Start"}
+
+5. If you have already configured a signature, click on the yellow "Sign" button to apply it. Otherwise, follow the prompts to configure your electronic signature.
+
+![](images/sign.png){fig-alt="DocuSign Sign"}
+
+6.  Once the signature is applied, click "Finish".
+
+![](images/finish.png){fig-alt="DocuSign Finish"}
+
+7.  You will then be redirected back to the management portal. And the "Terms of Use" task will be marked as completed.
+
+![](images/tou_completed.png){fig-alt="Terms of Use Completed"}
+
+### **Watching the Security Training Video**
+
+The Security Training Video needs to be completed as well. To complete the training, complete the following steps:
+
+1.  Click on the "Security Training Video" tile to load the player and then click play.
+
+![](images/security_training_video.png){fig-alt="Security Training Video Tile"}
+
+2.  Once you have watched the video in its entirety, click on the "Mark as Complete" button to complete the task.
+
+![](images/stv_complete.png){fig-alt="Security Training Video Complete"}
+
+> Note: the "MARK AS COMPLETE" button will not be enabled until at least 5 minutes have passed since the start of the video.
+
+3. Click on the back arrow in the upper right corner to return to the main tasks panel.
+
+![](images/back_arrow.png){fig-alt="Security Training Video Back Arrow"}
+
+4. The training video section will now be marked as completed.
+
+![](images/st_complete.png){fig-alt="Security Training Video Completed"}
+
+
+### **Complete the Security Training Quiz**
+
+The Security Training Quiz needs to be completed after the Security Training Video. To complete the training, complete the following steps:
+
+1. Click on the “Security Quiz” tile to load the quiz.
+
+![](images/st_quiz_tile.png){fig-alt="Security Training Quiz Tile"}
+
+2. Answer the questions and click on the "SUBMIT RESPONSE" button. You must answer at least four of the questions correctly to complete this task.
+
+![](images/submit_response.png){fig-alt="Security Training Quiz Submit Response"}
+
+3. You will be automatically redirected to the main task panel once the questionnaire has been successfully completed. And the "Security Quiz" will be marked as completed.
+
+![](images/security_quiz_complete.png){fig-alt="Security Training Quiz Complete"}

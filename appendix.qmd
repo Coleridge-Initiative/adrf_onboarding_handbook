@@ -500,7 +500,7 @@ It helps to analyze the major phases in the execution of a query. We can also fi
 
 **R:**
 
-\[Examples of using R with Amazon Redshift\] (https://aws.amazon.com/blogs/big-data/connecting-r-with-amazon-redshift/)
+[Examples of using R with Amazon Redshift](https://aws.amazon.com/blogs/big-data/connecting-r-with-amazon-redshift/)
 
 **ODBC configuration (for SAS and Stata):**
 
