@@ -17,9 +17,29 @@ This is recommended. If you lose access to one form of MFA, you would still be a
 :::
 
 ::: {.callout collapse="true"}
-## **How can I reset my password?**
+## **How can I reset my Okta password?**
 
 You can use the "Need help signing in?" option on the sign on page (https://adrf.okta.com) which will send a link to your email to reset your password. You may have to verify your identify by answering security questions which you set up when creating your account.
+:::
+
+::: {.callout collapse="true"}
+## **How can I reset my ADRF password?**
+
+You can reset your ADRF project password by following these steps:
+
+1. Click on the ADRF Management Portal Okta Tile:
+
+![](images/mp_icon.png){fig-alt="ADRF Management Portal Icon"}
+
+2. Then click on Admin Tasks on the left hand side of the screen:
+
+![](images/admin_tasks.png){fig-alt="Admin Tasks"}
+
+3. Then click on RESET PASSWORD:
+
+![](images/reset_password.png){fig-alt="Reset Password"}
+
+4. You'll see a screen where you can choose the project(s) for which you want to update the password.
 :::
 
 ::: {.callout collapse="true"}
