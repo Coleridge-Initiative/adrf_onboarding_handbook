@@ -1,0 +1,63 @@
+---
+title: "Accessing ADRF Dashboards"
+---
+
+If you are a first-time ADRF Users, please follow the instructions in the [Onboarding Modules and Security Training](onboarding.qmd) to activate your ADRF account and complete your onboarding tasks.
+
+## 1. Setting your dashboard access password
+
+Once you have completed the management portal onboarding tasks, you will next need to set your **dashboard access password**. This is separate from the first password you use to access the ADRF through Okta, and will instead be used to provide specific access to the dashboard. **You should only need to do this the first time you access the dashboard, but you can always follow these instructions if you need to update or reset your dashboard access password in the future**.
+
+In the Management Portal, again navigate to the “Admin Tasks” page by clicking the link on the sidebar navigation menu:
+
+![](images/db_admin_tasks.png){fig-alt="Dashboard Admin Tasks"}
+
+Click on the “Reset Password” button:
+
+![](images/db_reset_password.png){fig-alt="Reset Password"}
+
+This will load the password reset window:
+
+![](images/db_password_window.png){fig-alt="Password Reset Screen"}
+
+Select the account associated with the dashboard by clicking on the checkbox on the right:
+
+![](images/db_password_reset_project.png){fig-alt="Password Reset Screen Project Selection"}
+
+> Important: Take note of the username associated with your dashboard (John.Doe.P00000 in this example). You will need to enter this username again in the next step. This is also the user name referenced in your onboarding email.
+
+Enter the desired password. The chosen password must adhere to the ADRF password policy:
+
+![](images/db_enter_password.png){fig-alt="Password Policy"}
+
+Click the "Reset Password" button to proceed with the update. You will receive confirmation at the bottom of the window once the password has been successfully updated:
+
+![](images/db_successful_password.png){fig-alt="Sucessful Password"}
+
+Please email [support\@coleridgeinitiative.org](mailto:support@coleridgeinitiative.org "mailto:support@coleridgeinitiative.org") if you have any issues resetting this password.
+
+## 2. Accessing the Dashboard
+
+Once you have successfully reset your dashboard access password, you are ready to access the dashboard. To do so, navigate back to the main Okta portal (adrf.okta.com) and click on the tile associated with your dashboard. **This tile will be unavailable until you complete the three ADRF onboarding tasks discussed in Step 1**:
+
+![](images/db_dashboard_tile.png){fig-alt="Dashboard Tile"}
+
+Clicking on this will bring up another window where you will be prompted to “Choose Your Application to Get Started.” Click on your Dashboard icon:
+
+![](images/db_application.png){fig-alt="Dashboard Application"}
+
+Next, you will need to wait for your session to be prepared. Then, your session will load the secure browser window, which will then bring up the Posit Connect portal. The Posit Connect portal is used to host the Dashboard. **This step may take several seconds while the browser loads and prepares the dashboard data**.
+
+Before accessing the dashboard, you will then be presented with one final log in, to the secure Connect environment:
+
+![](images/db_secure_connect.png){fig-alt="Secure Connect"}
+
+Here, please enter:
+
+1.  The username you saw in the Password Reset step above (e.g., John.Doe.P00000)
+
+2.  Your dashboard access password that you set in Step 2.
+
+![](images/db_LDAP.png){fig-alt="LDAP Credentials"}
+
+Once you enter the appropriate information and click “Log In,” your dashboard should begin to load. This again may take a minute or two - if you run into any issues, please let us know!

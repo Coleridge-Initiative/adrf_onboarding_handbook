@@ -50,7 +50,7 @@ GRANT SELECT, UPDATE, DELETE, INSERT ON TABLE schema_name.table_name to "IAM:fir
 
 If you have any questions, please reach out to us at [support\@coleridgeinitiative.org](mailto:support@coleridgeinitiative.org "mailto:support@coleridgeinitiative.org")
 
-When connecting to the database through SAS, R, Stata, or Python you need to use one of the following DSNs:
+When connecting to the database using an ODBC connection, you need to use one of the following DSNs:
 
 -   **Redshift01_projects_DSN**
 
@@ -77,7 +77,8 @@ quit;
 To ensure R can efficiently manage large amounts of data, please add the following lines of code to your R script before any packages are loaded:
 
 ``` r
-options(java.parameters = c("-XX:+UseConcMarkSweepGC", "-Xmx8192m")) gc()
+options(java.parameters = c("-XX:+UseConcMarkSweepGC", "-Xmx8192m"))
+gc()
 ```
 
 **Best practices for writing tables to Redshift**
@@ -120,7 +121,7 @@ identifier.quote="`")
 conn <- dbConnect(driver, url, dbusr, dbpswd)
 ```
 
-*For the above code to work, please create a file name **.Renviron** in your user folder (user folder is something like i.e. u:\\ John.doe.p00002) And **.Renviron file** should contain the following:*
+*For the above code to work, please create a file name **.Renviron** in your user folder (user folder is something like i.e. u:\\John.doe.p00002) And **.Renviron file** should contain the following:*
 
 ``` r
 DBUSER='adrf\John.doe.p00002'
@@ -155,7 +156,7 @@ identifier.quote="`")
 conn <- dbConnect(driver, url, dbusr, dbpswd)
 ```
 
-*For the above code to work, please create a file name **.Renviron** in your user folder (user folder is something like i.e. u:\\ John.doe.p00002) And **.Renviron file** should contain the following:*
+*For the above code to work, please create a file name **.Renviron** in your user folder (user folder is something like i.e. u:\\John.doe.p00002) And **.Renviron file** should contain the following:*
 
 ``` r
 DBUSER='adrf\John.doe.p00002'
@@ -171,8 +172,7 @@ DBPASSWD='xxxxxxxxxxxx'
 ``` python
 import pyodbc
 import pandas as pd
-cnxn = pyodbc.connect('DSN=Redshift01_projects_DSN;
-                      UID = adrf\\user.name.project; PWD = password')
+cnxn = pyodbc.connect('DSN=Redshift01_projects_DSN; UID = adrf\\user.name.project; PWD = password')
 df = pd.read_sql(“SELECT * FROM projects.schema_name.table_name”, cnxn)
 ```
 
@@ -366,7 +366,7 @@ Query optimizers can change the order of the following list, but this general li
 
 *Join tables using the ON keyword.* Although it's possible to "join" two tables using a WHERE clause, use an explicit JOIN. The JOIN + ON syntax distinguishes joins from WHERE clauses intended to filter the results.
 
-`SET search_path = schema_name;`\-- this statement sets the default schema/database to projects.schema_name
+`SET search_path = schema_name;`-- this statement sets the default schema/database to projects.schema_name
 
 `SELECT A.col_A , B.col_B, B.col_C`
 
@@ -378,7 +378,7 @@ Query optimizers can change the order of the following list, but this general li
 
 **Avoid**
 
-`SET search_path = schema_name;`\-- this statement sets the default schema/database to projects.schema_name
+`SET search_path = schema_name;`-- this statement sets the default schema/database to projects.schema_name
 
 `SELECT col_A , col_B, col_C`
 
@@ -388,7 +388,7 @@ Query optimizers can change the order of the following list, but this general li
 
 **Prefer**
 
-`SET search_path = schema_name;`\-- this statement sets the default schema/database to projects.schema_name
+`SET search_path = schema_name;`-- this statement sets the default schema/database to projects.schema_name
 
 `SELECT A.col_A , B.col_B, B.col_C`
 

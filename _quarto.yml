@@ -24,6 +24,7 @@ book:
     - support.qmd
     - references.qmd
     - appendix.qmd
+    - dashboards.qmd
   search: 
     location: sidebar
     type: textbox
@@ -52,6 +53,7 @@ format:
     toc: true
     df-print: paged
     number-depth: 1
+
     
 
 
