@@ -172,8 +172,8 @@ DBPASSWD='xxxxxxxxxxxx'
 ``` python
 import pyodbc
 import pandas as pd
-cnxn = pyodbc.connect('DSN=Redshift01_projects_DSN; UID = adrf\\user.name.project; PWD = password')
-df = pd.read_sql(“SELECT * FROM projects.schema_name.table_name”, cnxn)
+cnxn = pyodbc.connect('DSN=Redshift01_projects_DSN; UID=adrf\user.name.project; PWD=password')
+df = pd.read_sql("SELECT * FROM projects.schema_name.table_name", cnxn)
 ```
 
 ### Stata Connection
