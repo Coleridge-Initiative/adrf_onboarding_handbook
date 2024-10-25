@@ -425,8 +425,8 @@ quit;</code></pre>
 <h3 class="anchored" data-anchor-id="python-connection">Python Connection</h3>
 <div class="sourceCode" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pyodbc</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>cnxn <span class="op">=</span> pyodbc.<span class="ex">connect</span>(<span class="st">'DSN=Redshift01_projects_DSN; UID = adrf</span><span class="ch">\\</span><span class="st">user.name.project; PWD = password'</span>)</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_sql(“SELECT <span class="op">*</span> FROM projects.schema_name.table_name”, cnxn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>cnxn <span class="op">=</span> pyodbc.<span class="ex">connect</span>(<span class="st">'DSN=Redshift01_projects_DSN; UID=adrf\user.name.project; PWD=password'</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_sql(<span class="st">"SELECT * FROM projects.schema_name.table_name"</span>, cnxn)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="stata-connection" class="level3">
 <h3 class="anchored" data-anchor-id="stata-connection">Stata Connection</h3>
