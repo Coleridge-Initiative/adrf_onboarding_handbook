@@ -22,9 +22,9 @@ book:
     - export.qmd
     - packages.qmd
     - support.qmd
-    - references.qmd
     - appendix.qmd
     - dashboards.qmd
+    - references.qmd
   search: 
     location: sidebar
     type: textbox
