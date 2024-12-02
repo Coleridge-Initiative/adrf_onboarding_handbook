@@ -72,32 +72,34 @@ quit;
 
 ### R Connection
 
-**Best practices for loading large amounts of data in R**
+#### Connecting to Redshift11_projects (Recommended)
 
-To ensure R can efficiently manage large amounts of data, please add the following lines of code to your R script before any packages are loaded:
-
-``` r
-options(java.parameters = c("-XX:+UseConcMarkSweepGC", "-Xmx8192m"))
-gc()
-```
-
-**Best practices for writing tables to Redshift**
-
-When writing an R data frame to Redshift use the following code as an example:
+> Note: You may need to install the packages `RJDBC` and `rstudioapi` first.
 
 ``` r
-# Note: replace the table_name with the name of the data frame you wish to write to Redshift
+library(RJDBC)
 
-DBI::dbWriteTable(conn = conn, #name of the connection 
-name = "schema_name.table_name", #name of table to save df to 
-value = df_name, #name of df to write to Redshift 
-overwrite = TRUE) #if you want to overwrite a current table, otherwise FALSE
+# Create username
+dbusr=paste("ADRF\\", Sys.getenv("USERNAME"), sep= '')                                                                                
 
-qry <- "GRANT SELECT ON TABLE schema.table_name TO group <group_name>;"
-dbSendUpdate(conn,qry)
+# Database URL
+url <- paste0("jdbc:redshift:iam://adrf-redshift11.cdy8ch2udktk.us-gov-west-1.redshift.amazonaws.com:5439/projects;",
+              "loginToRp=urn:amazon:webservices:govcloud;",
+              "ssl=true;",
+              "AutoCreate=true;",
+              "idp_host=adfs.adrf.net;",
+              "idp_port=443;",
+              "ssl_insecure=true;",
+              "plugin_name=com.amazon.redshift.plugin.AdfsCredentialsProvider")
+
+# Redshift JDBC Driver Setting
+driver <- JDBC("com.amazon.redshift.jdbc42.Driver",
+               classPath = "C:\\drivers\\redshift_withsdk\\redshift-jdbc42-2.1.0.12\\redshift-jdbc42-2.1.0.12.jar",
+               identifier.quote="`")
+con <- dbConnect(driver, url, dbusr, rstudioapi::askForPassword())
 ```
 
-***The below table is for connecting to RedShift11 Database***
+#### Connecting to Redshift11_projects using .Renviron File
 
 ``` r
 library(RJDBC)
@@ -132,12 +134,38 @@ DBPASSWD='xxxxxxxxxxxx'
 
 *This will ensure you don't have your id and password in R code and then you can easily share your R code with others without sharing your ID and password.*
 
-***The below table is for connecting to RedShift01 Database***
+#### Connecting to Redshift01_projects (Recommended)
+
+> Note: You may need to install the packages `RJDBC` and `rstudioapi` first.
 
 ``` r
 library(RJDBC)
-dbusr=Sys.getenv("DBUSER")                                                                                  
-dbpswd=Sys.getenv("DBPASSWD")
+
+# Create username
+dbusr=paste("ADRF\\", Sys.getenv("USERNAME"), sep= '')                                                                                
+
+# Database URL
+url <- paste0("jdbc:redshift:iam://adrf-redshift01.cdy8ch2udktk.us-gov-west-1.redshift.amazonaws.com:5439/projects;",
+              "loginToRp=urn:amazon:webservices:govcloud;",
+              "ssl=true;",
+              "AutoCreate=true;",
+              "idp_host=adfs.adrf.net;",
+              "idp_port=443;",
+              "ssl_insecure=true;",
+              "plugin_name=com.amazon.redshift.plugin.AdfsCredentialsProvider")
+
+# Redshift JDBC Driver Setting
+driver <- JDBC("com.amazon.redshift.jdbc42.Driver",
+               classPath = "C:\\drivers\\redshift_withsdk\\redshift-jdbc42-2.1.0.12\\redshift-jdbc42-2.1.0.12.jar",
+               identifier.quote="`")
+con <- dbConnect(driver, url, dbusr, rstudioapi::askForPassword())
+```
+
+#### Connecting to Redshift01_projects using .Renviron File
+
+``` r
+library(RJDBC)
+dbusr=Sys.getenv("DBUSER")                                                                    dbpswd=Sys.getenv("DBPASSWD")
 
 # Database URL
 url <- paste0("jdbc:redshift:iam://adrf-redshift01.cdy8ch2udktk.us-gov-west-1.redshift.amazonaws.com:5439/projects;",
@@ -166,6 +194,33 @@ DBPASSWD='xxxxxxxxxxxx'
 *PLEASE replace user id and password with your project workspace specific user is and password.*
 
 *This will ensure you don't have your id and password in R code and then you can easily share your R code with others without sharing your ID and password.*
+
+**Best practices for loading large amounts of data in R**
+
+#### SQL Basics with R Programming
+
+To ensure R can efficiently manage large amounts of data, please add the following lines of code to your R script before any packages are loaded:
+
+``` r
+options(java.parameters = c("-XX:+UseConcMarkSweepGC", "-Xmx8192m"))
+gc()
+```
+
+**Best practices for writing tables to Redshift**
+
+When writing an R data frame to Redshift use the following code as an example:
+
+``` r
+# Note: replace the table_name with the name of the data frame you wish to write to Redshift
+
+DBI::dbWriteTable(conn = conn, #name of the connection 
+name = "schema_name.table_name", #name of table to save df to 
+value = df_name, #name of df to write to Redshift 
+overwrite = TRUE) #if you want to overwrite a current table, otherwise FALSE
+
+qry <- "GRANT SELECT ON TABLE schema.table_name TO group <group_name>;"
+dbSendUpdate(conn,qry)
+```
 
 ### Python Connection
 
