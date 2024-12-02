@@ -380,16 +380,6 @@
     ]
   },
   {
-    "objectID": "references.html",
-    "href": "references.html",
-    "title": "References",
-    "section": "",
-    "text": "Confidential Information Protection and Statistical Efficiency Act of 2002. (Washington, DC: U.S. GPO, 2002).\nFederal Committee on Statistical Methodology. “Report on Statistical Disclosure Limitation Methodology,” 22 (Second Version, 2005). https://nces.ed.gov/fcsm/pdf/spwp22.pdf.\n“How to Use Microdata Properly: Self-Study Material for the Users of Eurostat Microdata Sets.” (2018). https://ec.europa.eu/eurostat/web/microdata/overview/self-study-material-for-microdata-users.\nResearch Data Centre of the German Federal Employment Agency at the Institute for Employment Research. “Remote Data Access and On-Site Use at the FDZ of the BA at the IAB.” (2020, December 8). http://doku.iab.de/fdz/access/Vorgaben_DAFE_EN.PDF\nWelpton, Richard. Handbook on Statistical Disclosure Control for Outputs. (figshare, 2019). https://doi.org/10.6084/m9.figshare.9958520.v1.",
-    "crumbs": [
-      "References"
-    ]
-  },
-  {
     "objectID": "appendix.html",
     "href": "appendix.html",
     "title": "12  Redshift querying guide",
@@ -457,6 +447,16 @@
     "text": "2. Accessing the Dashboard\nOnce you have successfully reset your dashboard access password, you are ready to access the dashboard. To do so, navigate back to the main Okta portal (adrf.okta.com) and click on the tile associated with your dashboard. This tile will be unavailable until you complete the three ADRF onboarding tasks discussed in Step 1:\n\nClicking on this will bring up another window where you will be prompted to “Choose Your Application to Get Started.” Click on your Dashboard icon:\n\nNext, you will need to wait for your session to be prepared. Then, your session will load the secure browser window, which will then bring up the Posit Connect portal. The Posit Connect portal is used to host the Dashboard. This step may take several seconds while the browser loads and prepares the dashboard data.\nBefore accessing the dashboard, you will then be presented with one final log in, to the secure Connect environment:\n\nHere, please enter:\n\nThe username you saw in the Password Reset step above (e.g., John.Doe.P00000)\nYour dashboard access password that you set in Step 2.\n\n\nOnce you enter the appropriate information and click “Log In,” your dashboard should begin to load. This again may take a minute or two - if you run into any issues, please let us know!",
     "crumbs": [
       "<span class='chapter-number'>13</span>  <span class='chapter-title'>Accessing ADRF Dashboards</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Confidential Information Protection and Statistical Efficiency Act of 2002. (Washington, DC: U.S. GPO, 2002).\nFederal Committee on Statistical Methodology. “Report on Statistical Disclosure Limitation Methodology,” 22 (Second Version, 2005). https://nces.ed.gov/fcsm/pdf/spwp22.pdf.\n“How to Use Microdata Properly: Self-Study Material for the Users of Eurostat Microdata Sets.” (2018). https://ec.europa.eu/eurostat/web/microdata/overview/self-study-material-for-microdata-users.\nResearch Data Centre of the German Federal Employment Agency at the Institute for Employment Research. “Remote Data Access and On-Site Use at the FDZ of the BA at the IAB.” (2020, December 8). http://doku.iab.de/fdz/access/Vorgaben_DAFE_EN.PDF\nWelpton, Richard. Handbook on Statistical Disclosure Control for Outputs. (figshare, 2019). https://doi.org/10.6084/m9.figshare.9958520.v1.",
+    "crumbs": [
+      "References"
     ]
   }
 ]
