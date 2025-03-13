@@ -158,7 +158,7 @@ To request an export be reviewed, please watch the following video or follow the
 
 ![](images/exp5.png){fig-align="center"}
 
-9.  Read through the entire page that loads. This page, titled "Create Export Request," will ask for you to comment on all supporting code files to explain the commands used to generate the files in the export request. The Export Review team will reject all requests containing intermediate output, and there should be no more than 10 separate files for export unless approval is given in advance. The Export Review team will typically release export requests within five business days. However, if the team has any clarifying questions, this could result in a longer review process. You need to document your output files in the text box provided. See the example below:
+9.  Read through the entire page that loads. This page, titled "Create Export Request," will ask for you to comment on all supporting code files to explain the commands used to generate the files in the export request. The Export Review team will reject all requests containing intermediate output. The Export Review team will typically release export requests within five business days. However, if the team has any clarifying questions, this could result in a longer review process. You need to document your output files in the text box provided. See the example below:
 
 ![](images/exp6.png){fig-align="center"}
 
