@@ -364,7 +364,7 @@
     "href": "packages.html#python-packages",
     "title": "10  Adding Additional Packages in R/Python",
     "section": "Python packages",
-    "text": "Python packages\nSimilar to R packages, Python packages may be installed using the Package Installer for Python (pip).\n\n\n\n\n\n\nNote\n\n\n\nWe recommend installing python packages from the command line. If you start Jupyter lab, and choose the Terminal tab:\n\nThen install your package using pip, for example, to install the pandas package:\n\nThen you may use the package within your Jupyter notebook as usual.\n\n\nTo install a specific package version type\npip install pandas==1.2.3",
+    "text": "Python packages\nSimilar to R packages, Python packages may be installed using the Package Installer for Python (pip).\n\n\n\n\n\n\nNote\n\n\n\nWe recommend installing python packages from the command line. If you start Jupyter lab, and choose the Terminal tab:\n\nThen install your package using pip, for example, to install the pandas package:\n\nThen you may use the package within your Jupyter notebook as usual.\n\nNote: Please include the option --user at the end of the pip command.\n\n\n\nTo install a specific package version type\npip install pandas==1.2.3 --user",
     "crumbs": [
       "<span class='chapter-number'>10</span>  <span class='chapter-title'>Adding Additional Packages in R/Python</span>"
     ]
