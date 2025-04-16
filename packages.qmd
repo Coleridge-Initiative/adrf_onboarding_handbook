@@ -50,8 +50,10 @@ Then install your package using pip, for example, to install the `pandas` packag
 ![](images/pip.png)
 
 Then you may use the package within your Jupyter notebook as usual.
+
+> Note: Please include the option `--user` at the end of the pip command.
 :::
 
 To install a specific package version type
 
-`pip install pandas==1.2.3`
+`pip install pandas==1.2.3 --user`
