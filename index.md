@@ -24,6 +24,5 @@ A detailed guide to help users navigate and use the Coleridge Initiative's Admin
 9. [Do's and Don'ts for Discussing Data Hosted in the ADRF](09-dos-and-donts.md)
 10. [Adding Additional Packages in R/Python](10-packages.md)
 11. [Redshift Querying Guide](11-querying-guide.md)
-12. [Accessing ADRF Dashboards](12-dashboards.md)
-13. [Password Reset for Pass Portal](13-pass_reset_password.md)
-14. [FAQ](14-faq.md)
+12. [Password Reset for Pass Portal](12-pass_reset_password.md)
+13. [FAQ](13-faq.md)
