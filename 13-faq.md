@@ -1,4 +1,4 @@
-# 14 Frequently Asked Questions (FAQ)
+# 13 Frequently Asked Questions (FAQ)
 
 ## Topics {#topics}
 

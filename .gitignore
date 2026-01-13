@@ -6,3 +6,23 @@
 old_user_guide/
 .quarto/
 .Rprofile
+# Quarto / build artifacts
+_book/
+_site/
+site_libs/
+
+# Quarto + RStudio metadata
+.quarto/
+.Rproj.user/
+.Rhistory
+.RData
+# Quarto / build artifacts
+_book/
+_site/
+site_libs/
+
+# Quarto + RStudio metadata
+.quarto/
+.Rproj.user/
+.Rhistory
+.RData
