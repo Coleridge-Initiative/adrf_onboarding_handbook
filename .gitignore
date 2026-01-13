@@ -2,5 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
-
 /.quarto/
+old_user_guide/
+.quarto/
+.Rprofile

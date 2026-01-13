@@ -1,3 +1,0 @@
-# Introduction
-
-This is a living document intended to show new ADRF users how to use the platform for common tasks

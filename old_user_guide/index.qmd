@@ -1,7 +1,0 @@
-# Preface {.unnumbered}
-
-This is a revised version of the [Coleridge Initiative](https://coleridgeinitiative.org/) ADRF User On-boarding Handbook
-
-This is a living document intended to show new ADRF users how to use the platform for common tasks
-
-© 2023 The Coleridge Initiative, Inc

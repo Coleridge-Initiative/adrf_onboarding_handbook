@@ -1,0 +1,67 @@
+project:
+  type: book
+
+book:
+  title: "ADRF User Guide"
+  author: "Jon Mills, Josh Edelmann, and Corey Sparks"
+  date: last-modified
+  date-format: "[Last Updated on] DD MMMM, YYYY"
+  chapters:
+    - index.md
+    - 01-intro.md
+    - 02-access.md
+    - 03-onboarding.md
+    - 04-access-and-use.md
+    - 05-access-data.md
+    - 06-where-to-work.md
+    - 07-collaborate.md
+    - 08-export.md
+    - 09-dos-and-donts.md
+    - 10-packages.md
+    - 11-querying-guide.md
+    - 12-dashboards.md
+    - 13-pass_reset_password.md
+    - 14-faq.md
+
+  # ⬇️ This is the global chapter sidebar
+  sidebar:
+    style: docked          # or "floating", but docked feels more “always there”
+    #background: "#4c2a9d"
+    search: true
+    collapse-level: 1      # show all top-level items expanded
+    pinned: true           # keep sidebar accessible on narrow screens
+    # (optional) explicitly list contents; by default it uses chapters anyway
+    contents:
+      - index.md
+      - 01-intro.md
+      - 02-access.md
+      - 03-onboarding.md
+      - 04-access-and-use.md
+      - 05-access-data.md
+      - 06-where-to-work.md
+      - 07-collaborate.md
+      - 08-export.md
+      - 09-dos-and-donts.md
+      - 10-packages.md
+      - 11-querying-guide.md
+      - 12-dashboards.md
+      - 13-pass_reset_password.md
+      - 14-faq.md
+
+  search:
+    location: sidebar
+    type: textbox
+    limit: 3
+
+format:
+  html:
+    theme: journal
+    backgroundcolor: "white"
+    highlight-style: arrow
+    embed-resources: false
+    toc: true          # optional; this is the per-page “On this page” headings
+    df-print: paged
+    number-sections: false 
+    number-depth: 1
+
+editor: visual
