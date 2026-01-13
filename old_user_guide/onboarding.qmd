@@ -1,0 +1,54 @@
+---
+title: "Onboarding Modules and Security Training"
+---
+
+## **Coleridge PASS (Privacy, Access, Safety, Security)**
+
+The Coleridge PASS Portal web-based application is positioned primarily as the management and monitoring console for project and data stewards. It provides detailed insight on project configurations, user activity, user onboarding status, and overall cost of a project on the ADRF. We focus on four primary pillars of information a Project/Data Steward most often focuses on:
+
+-   People -- Who are the members of projects, how often do they use the ADRF, what exports have they requested and their status, estimated cost per person/project for current month and for the project since inception, and detailed usage metrics.
+
+-   Projects -- Details of project start/end dates, abstract description, number of members onboarded and pending, and resources the project has access to (i.e. datasets, etc).
+
+-   Data Catalog -- A structured inventory of data assets that identifies where each dataset resides in the ADRF (database schema or file path), who is responsible for stewardship, how frequently it is updated, and what metadata and documentation exist. It supports Data Governance functions by improving transparency, reducing data onboarding friction, and enabling informed access and usage decisions.
+
+-   Agreements -- What agreements are related to these projects, indication of each member's signing status, members pending signature, and term (dates) covered by the agreement(s).
+
+As mentioned, the PASS Portal application will track your ADRF usage. The protal will also consolidate your ADRF Terms of Use, Security Training Quiz, and Security Training Video into one place. In order to complete ADRF onboarding, all three of the mentioned tasks are to be completed by the user (researcher). To access the Management Portal, log in using your credentials at [https://adrf.okta.com](https://adrf.okta.com/ "https://adrf.okta.com") and click on the ADRF PASS Portal icon. See picture below:
+
+![](images/pass.png){fig-alt="PASS" fig-align="center"}
+
+Once inside the PASS Portal, you have access to your personal workspaces and your support tickets:
+
+![](images/full_pass.png){fig-alt="PASS Portal"}
+
+
+## Accessing the Onboarding Tasks
+
+1.  Open PASS
+2.  Once open, the onboarding tasks will appear and then click on "DocuSign":
+
+![](images/tasks.png){fig-alt="ADRF Management Portal"}
+
+
+3.  This will load a document to sign:
+
+![](images/docusign.png){fig-alt="Onboarding Tasks Window"}
+
+4.  Once signed, a video will appear:
+
+![](images/video.png){fig-alt="Onboarding Tasks Window"}
+
+5.  Once finished, the Completed icon will illuminate. The final task is the security quiz:
+
+![](images/quiz.png){fig-alt="Onboarding Tasks Window"}
+
+### **Signing the ADRF Terms of Use Agreement**
+
+The Terms of Use need to be completed before you are given access to the data and project space inside the ADRF. To complete ADRF Terms of Use, complete the following steps:
+
+1.  Click on the "Terms of Use" tile.
+
+![](images/terms_of_use_tile.png){fig-alt="Terms of Use Tile"}
+
+
