@@ -2,7 +2,7 @@
 
 ## Topics {#topics}
 
--   [14 Frequently Asked Questions (FAQ)](#14-frequently-asked-questions-faq)
+-   [15 Frequently Asked Questions (FAQ)](#14-frequently-asked-questions-faq)
     -   [Topics](#topics)
     -   [How do I set up my Multifactor Authentication](#how-do-i-set-up-my-multifactor-authentication)
     -   [Can I set up more than one form of Multifactor Authentication?](#can-i-set-up-more-than-one-form-of-multifactor-authentication)
@@ -110,4 +110,4 @@ Solution: Ensure that both your username and password are entered correctly and 
 
 ------------------------------------------------------------------------
 
-[⬅️ Previous: Pass Portal Password Reset](13-pass_reset_password.md) \| [Back to Home](index.md) \|
+[⬅️ Previous: Pass Portal Password Reset](12-pass_reset_password.md) \| [Back to Home](index.md)

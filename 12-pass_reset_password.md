@@ -22,4 +22,4 @@ You will see a popup that asks you to enter a new password that need to match a 
 
 If you run into any issues, please reach out to us at [support\@coleridgeinitiative.org](mailto:support@coleridgeinitiative.org).
 
-[⬅️ Previous: Accessing ADRF Dashboards](12-dashboards.md) \| [Back to Home](index.md) \| [Next: FAQ ➡️](14-faq.md))
+[⬅️ Previous: Redshift Querying Guide](11-querying-guide.md) \| [Back to Home](index.md) \| [Next: FAQ ➡️](13-faq.md)
